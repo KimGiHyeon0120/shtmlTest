@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table, tr, td, th{
+            border : 1px solid #000;
+        }
+
+        
+    </style>
+
+</head>
+<body>
+    <!-- HTML 주석 -->
+
+    <!-- 제목 태그 -->
+     <h1>제목 1</h1> <!-- h1 ~ h6 : 숫자가 작아지면 사이즈 작아짐 -->
+     <h2>Hello World</h2>
+     <h3>Hello World</h3>
+     <h4>Hello World</h4>
+     <h5>Hello World</h4>
+     <h6>Hello World</h6>
+     <hr> <!-- 구분선 -->
+
+     <!-- p는 문단을 작성하는 공간 -->
+    <p>
+        충청남도 청양군 지역내 위치한 교육업종의 업체리스트 및 지역정보입니다. 검색업체는 도서독서 독서실 업종으로 총 1개 업소 목록 페이지입니다. 전체, 청양읍 등 청양군내 2개의 동에서 검색되었으며 각 동별로 좌표를 제공하여 고객이 쉽게 자동차로 방문할수 있도록 지도 및 로드뷰 서비스를 제공합니다.
+        ( 중소벤처기업부 소상공인시장진흥공단 사업자
+    </p>
+
+    <p>
+        2022.10.04. 청양중학교(교장 전건용)는 지난달 19일부터 5일간 학교 도서관과 시청각실에서 독서의 달 행사를 실시했다. 도서부 주최로 점심시간을 활용해 진행된 이번 행사는 △도서관 미션 수행하기 △책 빌리고 
+    </p>
+
+    <!-- 목록 태그 [ol, ul]-->
+    <!-- ol : 순서 있는 목록 -->
+    <ol>
+        <li>한국</li>
+        <li>미국</li>
+        <li>중국</li>
+        <li>일본</li>
+    </ol>
+
+    <!-- 순서 없는 목록 -->
+    <ul>
+        <li>사과</li>
+        <li>바나나</li>
+        <li>수박</li>
+    </ul>
+
+    <!-- 목록 안에 목록 가능 -->
+     <ul>
+        <li>호랑이</li>
+        <ul>
+            <li>범</li>
+            <li>라이언</li>
+        </ul>
+     </ul>
+
+     <!-- 테이블(표) -->
+
+    <!-- tr, td가 항상 존재 -->
+    <!-- table>tr*필요개수>td*필요개수 가능-->
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>>
+            <td>5</td>>
+            <td>6</td>>
+        </tr>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <!-- th는 해당 컬럼의 컬럼 설명(comment)하는 곳 -->
+                <th></th>
+                <th>국어점수</th>
+                <th>영어점수</th>
+                <th>수학점수</th>
+                <th>체육점수</th>
+                <th>과학점수</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th rowspan = "2">학생</th>
+                <th>슈퍼맨</th>
+                <td>1</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <th>배트맨</th>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th colspan="2">평균</th>
+                <td>1</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <span> JLabel 같은 태그임 (강조하고 싶은 부분에 사용)</span>
+    <p>가나다라마<span>바바바바</span></p>
+
+</body>
+</html>라이언

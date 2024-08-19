@@ -4,8 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>경빈이 귀여웡>_&lt;</title>
+    <!-- Intenal CSS 우선순위 3순위 -->
+    <style>
+        .font_con{
+            color: red;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .font_bor{
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
+    <!-- 인라인 스타일 inline Style ★ 우선순위 2순위 -->
+    <h1 style="color: blue; font-size: 50px;">Hello world</h1>
+    <p>가나다라마<span class="font_con font_bor">바사아</span>자카파타파하</p>
+    <span class="font_con">대한민국</span>
     
 </body>
 </html>
