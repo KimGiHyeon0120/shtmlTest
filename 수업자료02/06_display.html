@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .inner{
+            width: 150px;
+            height: 150px;
+            color: white;
+            background-color: brown;
+            border: 1px solid black;
+            margin-bottom: 5px;
+            font-size: 100px;
+        }
+        .none{
+            display: none;
+        }
+        .block{
+            display: block;
+        }
+        .inline{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <!-- 
+    display
+    화면에 어떻게 표현을 할 것인지 정의
+
+    none
+    ( 감추는 것, html테그 자체를 없앤다. ) 
+
+    block
+    가로영역을 모두 채우는 특징 ( default ), div, h1 ~ h6
+    다음 테그가 존재할 때, 자동으로 개행( 줄 바꿈 )
+
+    inline
+    contents 영역만큼만 지정
+    자동으로 줄바꿈(개행)되지 않는다. ( span, input )
+    width, height 설정 안 됨 ( padding으로 설정, 글자크기로 확장,축소)
+    word같은 문서에도 볼드, 이텔릭, 색상, 밑줄 등 글자나 문장에 효과를
+    주기위한 단위를 할 수 있다
+
+    inline-block
+    block과 inline의 중간 형태 요소는 inline인데 적용은 block
+    inline처럼 컨텐츠만큼 영역을 지정, 가로로 배치
+    block의 width, height지정 가능
+
+    flex
+    display 반응형에 맞춰서 만들어진 옵션
+    옵션에 따라서, 만들고 싶은 모양으로 선택해서 사용이 가능하다.
+    -->
+
+
+    
+
+
+    <!-- div.outer>div.inner*5 -->
+    <div class="outer">
+        <div class="inner none">1</div>
+        <div class="inner inline">2</div>
+        <div class="inner block">3</div>
+        <div class="inner inline">4</div>
+        <div class="inner inline">5</div>
+    </div>
+
+</body>
+</html>
