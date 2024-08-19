@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { 
+            margin: 0;
+            padding: 0;
+        }
+        main,section,article,div{
+            border: 2px solid black;
+        }
+        main{
+            max-width: 600px;
+            height: 2000px;
+            margin: 0;
+            background-color: green;
+        }
+        section{
+            margin: 20px;
+            background-color: greenyellow;
+        }
+        article{
+            background-color: rgb(183, 243, 123);
+            padding: 20px;
+        }
+        div{
+            background-color: white;
+        }
+        /*position을 absolute로 설정하면 절대적인 위치에 생성*/
+        div.abs{
+            position: absolute;
+            background-color: chocolate;
+            left: 20px;
+            top: 20px;
+        }
+        /*
+        position을 relative설정하고 이 div안에 absolute하면 
+        relative기준으로 absolute위치에 생성한다
+        */
+        div.relative{
+            position: relative;
+        }
+        /*스크롤을 따라옴*/
+        div.fixed{
+            position: fixed;
+            bottom: 50px;
+            left: 20px;
+        }
+        /**/
+        div.sticky{
+            position: sticky;
+            bottom: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>main
+        <section>section
+            <article>article
+                <div> Hello World </div>
+                <div class="abs"> ABS1 </div>
+                <div class="relative"> relative 
+                <div class="abs"> ABS2 </div>
+            </div>
+            <div class="fixed"> fixed </div>
+            <div class="sticky"> sticky </div>
+            </article>
+        </section>
+    </main>
+    
+</body>
+</html>
