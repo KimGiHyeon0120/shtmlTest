@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .di {
+            font-size: 25px;
+            font-weight: bold;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 15px;
+            width: 140px;
+            margin: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <input type="button" value="버튼1">
-    <button>버튼2</button>
-    
+    <div class="di" onclick="클릭()">임시버튼</div>
+    <input type="button" value="버튼1" onclick="클릭()">
+    <button onclick="클릭()">버튼2</button>
+
+    <script>
+        function 클릭(){
+            alert('javascript실행');
+        }
+    </script>
 </body>
 </html>

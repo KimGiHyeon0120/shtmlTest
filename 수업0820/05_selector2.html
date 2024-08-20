@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복합 식별자2</title>
+    <style>
+        section li {
+            color: blue;
+        }
+        section p {
+            color: red;
+        }
+        section>ul>li{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        section>p+ul>li{
+            border: 2px solid blue;
+        }
+        section > p ~ ul{
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>out1</li>
+    </ul>
+    <section>
+        <p>p태그입니다</p>
+        <ul>
+            <li>리스트1</li>
+            <li>리스트2</li>
+            <ul>
+                <li>리스트3-1</li>
+                <li>리스트3-2</li>
+            </ul>
+        </ul>
+        <ul>
+            <li>리스트1</li>
+            <li>리스트2</li>
+            <ul>
+                <li>리스트3-1</li>
+                <li>리스트3-2</li>
+            </ul>
+        </ul>
+    </section>
+</body>
+</html>

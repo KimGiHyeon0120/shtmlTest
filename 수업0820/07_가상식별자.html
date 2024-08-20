@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    *{
+        font-size: 50px;
+    }
+    a{
+        display: block;
+        text-decoration: none;
+        color: black;
+    }
+    a:hover{
+        color: blue;
+        border-bottom: 1px solid blue;
+    }
+    a:visited{
+        color: red;
+    }
+    a:link{
+        color: green;
+    }
+    input:hover{
+        border-color: blue;
+    }
+    input:focus{
+        border-color: green;
+    }
+    label {
+        font-weight: bold;
+        margin-top: 15px;
+    }
+    label::before{
+        content: '*';
+        color: red;
+    }
+    label::after{
+        content: ' : ';
+        color: green;
+    }
+</style>
+</head>
+<body>
+    <a href="https://www.naver.com/">네이버</a>
+    <a href="https://www.asdfhaskdf.com/">이상한 사이트1</a>
+    <a href="https://www.asdjfbhkawdhf.com/">이상한 사이트2</a>
+    <label>입력창</label><input type="text">
+    
+</body>
+</html>
