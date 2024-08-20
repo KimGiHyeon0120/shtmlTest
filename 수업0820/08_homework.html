@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        input:hover{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="이미지 1" onclick="클릭()">
+    <input type="button" value="이미지 2" onclick="클릭2()">
+    <input type="button" value="이미지 3" onclick="클릭3()">
+
+    <img src = "../img/0820back.jpg" alt = "귀여운사진" class = "img" id="model_open">
+    <img src = "../img/0820back2.jpg" alt = "귀여운사진" class = "img" id="model_open2">
+    <img src = "../img/0820_1.jpg" alt = "귀여운사진" class = "img" id="model_open3">
+
+    <script>
+        var num1 = 0;
+        var num2 = 0;
+        var num3 = 0;
+
+        function 클릭(){
+            let model = document.getElementById('model_open');
+            if(num1 % 2 == 0){
+                model.style.display = 'block';
+                num1 += 1;
+            }else{
+                model.style.display = 'none';
+                num1 += 1;
+            }
+        }
+        function 클릭2(){
+            let model = document.getElementById('model_open2');
+            if(num2 % 2 == 0){
+                model.style.display = 'block';
+                num2 += 1;
+            }else{
+                model.style.display = 'none';
+                num2 += 1;
+            }
+        }
+        function 클릭3(){
+            let model = document.getElementById('model_open3');
+            if(num3 % 2 == 0){
+                model.style.display = 'block';
+                num3 += 1;
+            }else{
+                model.style.display = 'none';
+                num3 += 1;
+            }
+        }
+    </script>
+</body>
+</html>
