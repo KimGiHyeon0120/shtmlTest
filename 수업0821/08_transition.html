@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /*
+            linear: 시작과 끝까지 일정하게 진행
+            ease: 시작과 끝에서만 천천히, 중간만 빠르다
+            ease-in: 시작할때 천천히, 끝날때 빠르게
+            ease-out: 시작할때 빠르고, 끝날때 천천히
+            ease-in-out: 시작과 끝에서 천천히, 중간만 빠르다
+        */
+        .button {
+            background-color: blue;
+            transition: background-color 0.5s  ease-in;
+        }
+        .button:hover{
+            background-color: red;
+        }
+        .outline, .box{
+            width: 60px;
+            height: 60px;
+        }
+        .outline{
+            margin: 100px;
+            border: 3px solid yellow;
+        }
+        .box{
+            background-color: deepskyblue;
+            /* transition-delay: 2s; */
+            transition-duration: 2s;
+            transition-timing-function:ease;
+
+        }
+        .box:hover{
+            transform: translateX(100px);
+            border-radius: 3%;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" class="button" value="전송">
+    <div class="outline">
+        <div class="box"></div>
+    </div>
+    
+</body>
+</html>

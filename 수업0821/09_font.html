@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Bad+Script');
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+            background-image: url(../img/dark.jpg);
+            background-size: cover;
+
+
+            color: rgb(197, 197, 197);
+            font-family: 'Bad Script', cursive;
+            overflow: hidden;
+        }
+        h1 span {
+            
+            display: table-cell;
+            animation: animat 1s linear infinite;
+        }
+        h1{
+            margin: 0;
+            padding: 0;
+            font-size: 11em;
+            /* 투명기능 잡으면 보임 */
+            color: transparent;
+        }
+        h1 span:nth-child(5n+1){
+            animation-delay: 1s;
+        }
+        h1 span:nth-child(5n+2){
+            animation-delay: 0.25s;
+        }
+        h1 span:nth-child(5n+3){
+            animation-delay: 0.5s;
+        }
+        h1 span:nth-child(5n+4){
+            animation-delay: 0.75s;
+        }
+        @keyframes animat{
+            0%,100%{
+                color: white;
+                filter: blur(2px);
+                text-shadow: 
+                0 0 20px #00b3ff,
+                0 0 40px #00b3ff,
+                0 0 80px #00b3ff,
+                0 0 120px #00b3ff,
+                0 0 200px #00b3ff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <span>H</span>
+        <span>e</span>
+        <span>l</span>
+        <span>l</span>
+        <span>o</span>
+        <span>&nbsp;</span>
+        <span>W</span>
+        <span>o</span>
+        <span>r</span>
+        <span>l</span>
+        <span>d</span>
+    </h1>
+    
+</body>
+</html>

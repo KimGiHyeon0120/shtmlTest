@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .dto {
+            width: 20px;
+            height: 20px;
+            background-color: deepskyblue;
+            border-radius: 50%;
+            margin: 5px;
+            animation: buffer 1s infinite alternate;
+        }
+        @keyframes buffer {
+            /* 중간중간 다르게 하고 싶으면 %사용함 */
+            0%{
+                transform: translateY(90px);
+                background-color: red;
+            }
+            20%{
+                background-color: rgb(37, 241, 241);
+            }
+            40%{
+                transform: translateY(-100px);
+                transform: translateX(50px);
+                background-color: rgb(166, 247, 15);
+            }
+            60%{
+                
+                background-color: rgb(231, 43, 238);
+            }
+            80%{
+                transform: translateY(100px);
+                transform: translateX(-50px);
+                background-color: rgb(87, 69, 255);
+            }
+
+            100%{
+                transform: translateY(-100px);
+            }
+        }
+        .dto:nth-child(1){
+            animation-delay: 0s;
+        }
+        .dto:nth-child(2){
+            animation-delay: 0.2s;
+
+        }
+        .dto:nth-child(3){
+            animation-delay: 0.4s;
+
+        }
+        .dto:nth-child(4){
+            animation-delay: 0.6s;
+
+        }
+        .dto:nth-child(5){
+            animation-delay: 0.8s;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="dto"></div>
+        <div class="dto"></div>
+        <div class="dto"></div>
+        <div class="dto"></div>
+        <div class="dto"></div>
+    </div>
+</body>
+</html>

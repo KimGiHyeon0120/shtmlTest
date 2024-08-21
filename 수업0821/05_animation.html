@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outline, .box{
+            width: 60px;
+            height: 60px;
+        }
+        .outline{
+            margin: 100px;
+            border: 3px solid yellow;
+        }
+        .box{
+            background-color: deepskyblue;
+        }
+        .animation {
+            /* infinite = 계속 반복*/
+            animation: test01 2s infinite linear;
+        }
+        /* animation 적용*/
+        /* @keyframes 애니메이션 명 ( 변수명 )*/
+        @keyframes test01{
+            /* 시작 */
+            from { transform: rotate(0deg); 
+            background-color: red;}
+            
+            /* 종료 */
+            to { transform: rotate(360deg);
+            background-color: blue;}
+        }
+    </style>
+</head>
+<body>
+    <h1>animation</h1>
+    <div class="outline">
+        <div class="box animation"></div>
+    </div>
+
+    <hr>
+</body>
+</html>

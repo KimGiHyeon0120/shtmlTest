@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #232323;
+        }
+        .box{
+            position: relative;
+            width: 380px;
+            height: 420px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .box::before{
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 380px;
+            height: 420px;
+            background: linear-gradient(0deg, transparent,transparent, #45f3ff, #45f3ff, #45f3ff);
+            z-index: 1;
+            transform-origin: bottom right;
+            animation: border 6s linear infinite;
+        }
+        .box::after{
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 380px;
+            height: 420px;
+            background: linear-gradient(0deg, transparent,transparent, #45f3ff, #45f3ff, #45f3ff);
+            z-index: 1;
+            transform-origin: bottom right;
+            animation: border 6s linear infinite;
+            animation-delay: -3s;
+        }
+
+        .borderLine{
+            position: absolute;
+            top: 0;
+            inset: 0;
+        }
+        .box form{
+            position: absolute;
+            inset: 4px;
+            background: #222;
+            padding: 50px 40px;
+            border-radius: 8px;
+            /* 숫자가 높을수록 앞으로 보임 */
+            z-index: 2;
+        }
+        @keyframes border{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span class="borderLine">
+            <form>
+                <!-- input 추가 -->
+                 <input type="text"> -------- <input type="button" value="로그인">
+                 <hr>
+                 <input type="text"> -------- <input type="button" value="로그인">
+                 
+            </form>
+        </span>
+    </div>
+</body>
+</html>

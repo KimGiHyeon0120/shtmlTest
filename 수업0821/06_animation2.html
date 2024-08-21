@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outline, .box{
+            width: 60px;
+            height: 60px;
+        }
+        .outline{
+            margin: 250px;
+            margin-left: 500px;
+            border: 3px solid yellow;
+        }
+        .box{
+            background-color: deepskyblue;
+        }
+        .animation {
+            animation: test01 2s infinite linear;
+        }
+
+        @keyframes test01{
+            from { 
+                transform: rotate(0deg) translateX(200px); 
+                background-color: red;
+            }
+
+            to { 
+                transform: rotate(360deg) translateX(200px); 
+                background-color: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>animation</h1>
+    <div class="outline">
+        <div class="box animation"></div>
+    </div>
+
+    <hr>
+</body>
+</html>
