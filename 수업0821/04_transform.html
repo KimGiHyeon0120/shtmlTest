@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        .outline, .box{
+            width: 60px;
+            height: 60px;
+        }
+        .outline{
+            margin: 100px;
+            border: 3px solid yellow;
+        }
+        .box{
+            background-color: deepskyblue;
+        }
+        .translate1 {
+            /*우측으로 50px*/
+            transform: translateX(50px);
+        }
+        .translate2 {
+            /*좌측으로 50px*/
+            transform: translateX(-50px);
+        }
+        .translate3 {
+            /*x,y축*/
+            transform: translate(100px, 50px);
+        }
+        .translate4 {
+            /*아래로 50px*/
+            transform: translateY(50px);
+        }
+        .translate5 {
+            /*위로 50px*/
+            transform: translateY(-50px);
+        }
+        .scale1{
+            /*1을 기준으로 크기조정*/
+            transform: scale(0.5);
+        }
+        .scale2{
+            /*1을 기준으로 크기조정*/
+            transform: scale(1.5);
+        }
+        .scale3{
+            /*너비만 조정하고 싶을때*/
+            transform: scaleX(1.5);
+        }
+        .scale4{
+            /*높이만 조정하고 싶을때*/
+            transform: scaleY(1.5);
+        }
+        .rotate1{
+            /*시계 방향으로 45도 돌림*/
+            transform: rotate(45deg);
+            /*반시계방향으로 45도 돌림*/
+            /*transform: rotate(-45deg);*/
+        }
+        /*사다리꼴 만들기*/
+        .rotate2{
+            transform: rotateX(1deg);
+        }
+        .parOunline{
+            perspective: 1px;
+        }
+        .skew1{
+            /*(x,y)로 기울기 조정*/
+            transform: skew(25deg, 25deg);
+        }
+        .skew2{
+            /*좌우로 기울기 조정*/
+            transform: skewX(25deg);
+        }
+        .skew3{
+            /*상하로 기울기 조정*/
+            transform: skewY(25deg);
+        }
+        
+    </style>
+</head>
+<body><h1>translate</h1>
+    <div class="outline">
+        <div class="box translate1"></div>
+    </div>
+    <div class="outline">
+        <div class="box translate2"></div>
+    </div>
+    <div class="outline">
+        <div class="box translate3"></div>
+    </div>
+    <div class="outline">
+        <div class="box translate4"></div>
+    </div>
+    <div class="outline">
+        <div class="box translate5"></div>
+    </div>
+    <hr>
+    <h1>scale</h1>
+    <div class="outline">
+        <div class="box scale1"></div>
+    </div>
+    <div class="outline">
+        <div class="box scale2"></div>
+    </div>
+    <div class="outline">
+        <div class="box scale3"></div>
+    </div>
+    <div class="outline">
+        <div class="box scale4"></div>
+    </div>
+    <hr>
+    <h1>rotate</h1>
+    <div class="outline">
+        <div class="box rotate1"></div>
+    </div>
+    <!-- 사다리꼴 -->
+    <div class="outline parOunline">
+        <div class="box rotate2"></div>
+    </div>
+    <hr>
+    <h1>skew</h1>
+    <div class="outline">
+        <div class="box skew1"></div>
+    </div>
+    <div class="outline">
+        <div class="box skew2"></div>
+    </div>
+    <div class="outline">
+        <div class="box skew3"></div>
+    </div>
+</body>
+</html>
