@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="q" value="" > + <input type="text" name="" id="qq"  value="">
+    <input type="button" value="더하기 " onclick="plus()"><br>
+    <input type="text" id="result">
+
+    <script>
+
+        function plus(){
+            let num1 = document.getElementById('q').value;
+            let num2 = document.getElementById('qq').value;
+            let result = document.getElementById('result');
+            
+            result.value = Number(num1) + Number(num2);
+        }
+    </script>
+</body>
+</html>

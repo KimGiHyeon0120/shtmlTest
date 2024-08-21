@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="user_id" value="Hello World">
+
+    <input type="button" value="클릭" onclick="클릭()">
+
+        
+    <script>
+        let dd = document.getElementById('user_id');  
+        //stack - heap
+        //dd => 'hello world'; -> string x.
+        document.getElementById('user_id').value = 'Java';
+        dd.value = '청양';
+
+        //이벤트 핸들러 ( 마우스, 키보드, 페이지 )
+        function 클릭(){
+            alert(dd.value);
+        }
+
+    </script>
+    
+</body>
+</html>

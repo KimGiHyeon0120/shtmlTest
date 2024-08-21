@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  -->
+    <input type="" id="user_id" name="" value="Hi">
+    <input type="button" value="클릭" onclick="클릭()">
+
+    <script>
+
+        //document.getElementById('user_id') --> id가 user_id인 것을 찾아라!
+        //document.getElementById('user_id').value --> id가 user_id인 것의 value를 찾아라!
+        let dd = document.getElementById('user_id').value;
+        console.log(dd);
+        
+        //stack -- heap
+        // dd는 문자가 아니라 <input type="" id="user_id" name="" value="Hi"> 이것을 나타냄
+        // dd => 'Hi' --> string아님
+
+
+        document.getElementById('user_id').value = 'java';
+        //document.getElementById('user_id').value = 'java'; --> java로 바뀜
+        dd.value = '청양';
+        //이것도 바뀜
+
+        클릭();
+        //이벤트 핸들러 ( 키보드, 마우스, 키패드 )
+        function 클릭() {
+            alert(dd.value);
+        }
+
+        
+
+
+
+
+        //          ★ 스크립트 읽는 순서 ★
+        //함수();
+        // document들을 위쪽으로 빼주는게 좋음
+        /*
+        document --> 위에서 아래로 읽어서 위쪽에 적는게 좋음
+        function --> 위치 노상관
+        */
+        // 함수();     --> function ( 위치에 상관없이 찾아서 읽음 ) like 메소드
+        function 함수(){
+            alert('함수 알림창');
+            console.log(dd);
+        }
+
+
+        
+        
+
+    </script>
+</body>
+</html>
