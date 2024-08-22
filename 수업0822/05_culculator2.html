@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1">
+    
+    <input type="radio" name="net" value="+" checked>+
+    <input type="radio" name="net" value="-">-
+    <input type="radio" name="net" value="*">*
+    <input type="radio" name="net" value="/">/
+<br>
+    <input type="text" id="num2">
+    <input type="button" value=" = " onclick="result()">
+    <input type="text" id="result">
+
+    <script>
+        
+        function result(){
+            let ra = document.getElementsByName('net')
+            for (let i = 0; i < ra.length ; i++){
+                if( ra[i].checked){
+                    if( ra[i].value == '+'){
+                        document.getElementById('result').value = Number(num1.value) + Number(num2.value)
+                    }
+                    else if( ra[i].value == '-'){
+                        document.getElementById('result').value = Number(num1.value) - Number(num2.value)
+                    }
+                    else if( ra[i].value == '*'){
+                        document.getElementById('result').value = Number(num1.value) * Number(num2.value)
+                    }
+                    else if( ra[i].value == '/'){
+                        document.getElementById('result').value = parseFloat(num1.value) / parseFloat(num2.value)
+                    }
+                }   
+            }
+
+        }
+    </script>
+</body>
+</html>

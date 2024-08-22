@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>좋아하는 국가?</h1>
+    <!-- 라디오 버튼은 id로 찾을 이유가 없다 -->
+    <!-- 어짜피 중복선택이 안되기 때문 -->
+    <input type="radio" name="net" value="한국">한국
+    <input type="radio" name="net" value="일본">일본
+    <input type="radio" name="net" value="미국">미국
+    <input type="radio" name="net" value="중국">중국
+    <br>
+
+    <input type="button" value="선택" onclick="result()">
+
+    <script>
+
+        function result(){
+            /* 라디오 버튼은 getElementsByName으로 */
+            //이름이 net인 항목들을 다 배열로 가지고온다.
+            let ra = document.getElementsByName('net')
+            for (let i = 0; i < ra.length ; i++){
+                if(ra[i].checked){
+                    console.log(ra[i].value);
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html>
