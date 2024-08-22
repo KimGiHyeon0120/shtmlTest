@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>좋아하는 취미    </h1>
+    <input type="checkbox" name="hobbys" value="취미1">취미1
+    <input type="checkbox" name="hobbys" value="취미2">취미2
+    <input type="checkbox" name="hobbys" value="취미3">취미3
+    <input type="checkbox" name="hobbys" value="취미4">취미4
+    <input type="checkbox" name="hobbys" value="취미5">취미5
+    <br>
+    <input type="button" value="전송" onclick="hobby()">
+    <script>
+        function hobby(){
+            let result = new Array();
+
+            let ho = document.getElementsByName('hobbys')
+            let hochk = 0;
+            for(var i = 0; i < ho.length;i++){
+                if(ho[i].checked){
+                    hochk++;
+                    result.push(ho[i].value)
+                    console.log(ho[i].value)
+                }
+            }
+            if(hochk == 0){
+                alert('선택해');
+                return;
+            }
+            if(result.length == 0){
+                alert('선택해');
+                return;
+            }
+            console.log(result)
+        }
+    </script>
+</body>
+</html>
