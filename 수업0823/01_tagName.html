@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="id" name="name" value="helloword" >
+    <input type="button" value="">
+    <input type="checkbox" name="" id="">
+    <script>
+        /*id로 불러오기*/
+        let do_id = document.getElementById('id')
+        console.log(do_id)
+
+        /*name으로 불러오기*/
+        let do_name = document.getElementsByName('name')
+        console.log(do_name)
+
+        /*tag로 불러오기*/
+        let do_tag = document.getElementsByTagName('input')
+        console.log('input',do_tag)
+        for(let i = 0; i<do_tag.length;i++){
+            console.log(do_tag[i].value)
+            console.log(do_tag[i].type)
+        }
+
+    </script>
+</body>
+</html>

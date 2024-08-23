@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .border {
+            border: 1px solid black;
+        }
+        .font_size {
+            font-size: 20px;
+        }
+        .padding {
+            padding: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <input type="text" class="border padding" >
+    <input type="text" class="border font_size">
+    
+    <script>
+        //Selector을 호출 ( CSS와 동일 )
+        //document.querySelectorAll()
+        //괄호 안에 ('.font_size') 이런식으로 불러옴
+
+        let qq = document.querySelectorAll('.border')
+        let qq1 = document.querySelectorAll('.font_size')
+        let qq2 = document.querySelectorAll('.padding')
+        let qq3 = document.querySelectorAll('.border:nth-child(1)')
+        //이런식으로도 가능
+        let qq4 = document.querySelectorAll('input')
+
+
+        console.log(qq)
+        console.log(qq1)
+        console.log(qq2)
+        console.log(qq3)
+        console.log(qq4)
+
+
+        //querySelector은 검색 된 것들 중에서 제일 처음 나온것을 불러온다
+        let a1 = document.querySelector('.border')
+        console.log(a1)
+
+    </script>
+</body>
+</html>
