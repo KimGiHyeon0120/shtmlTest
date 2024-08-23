@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            /* view width 현재 화면 너비의 100% */
+            width: 100vw;
+            /* view width 현재 화면 높이의 100% */
+            height: 100vh;
+
+            /* flex는 기본적으로 우측으로 나열함 */
+            display: flex;
+
+            /* 상하로  나열함 */
+            /* flex-direction: column; */
+
+            /* 밑에서 위로 나열 */
+            /* flex-direction: column-reverse; */
+
+            /* 우측에서 좌측으로 */
+            /* flex-direction: row-reverse; */
+
+            /* 기본적으로 row*/
+            flex-direction: row;
+
+            /* 크기 고정 하고 밑으로 내림 */
+            /* 개행고정 */
+            flex-wrap: wrap;
+
+            /* 좌측정렬 */
+            /* justify-content: flex-start; */
+
+            /* 가운데 정렬 */
+            justify-content: center;
+
+            /* 우측정렬 */
+            /* justify-content: flex-end; */
+
+            /* 좌 우 가운데 정렬 */
+            /* justify-content: space-between; */
+
+            /* 한줄을 기준으로 수직 정렬 */
+            align-self: flex-start;
+
+        }
+        .box {
+            margin: 10px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            background-color: aqua;
+        }
+        .item1 {
+            order: 1;
+        }
+        .item2 {
+            order: 2;
+        }
+        .item3 {
+            order: 3;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box" onclick="over()">1</div>
+
+    <!-- 마우스 더블 클릭 -->
+    <div class="box" ondblclick="over()">2</div>
+
+    <!-- 마우스 누르는 순간 -->
+    <div class="box" onmousedown="over()">3</div>
+
+    <!-- 마우스 때는 순간 -->
+    <div class="box" onmouseup="over()">4</div>
+
+    <!-- 마우스 올라간 순간 -->
+    <div class="box" onmousemove="cons()">5</div>
+
+    <!-- 마우스가 그 공간에 들어갔을때 -->
+    <div class="box" onmouseover="over()">6</div>
+
+    <!-- 마우스가 그 공간에서 나갔을때 -->
+    <div class="box" onmouseout="over()">7</div>
+
+
+<input type="text" onkeydown="input(e)">
+
+    <script>
+        function over(){
+            alert('반응')
+        }
+        function cons(){
+            console.log('check');
+        }
+        function input(e){
+            console.log(e);
+        }
+
+    </script>
+</body>
+</html>
