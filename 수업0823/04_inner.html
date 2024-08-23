@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title" >Hello word</h1>
+
+    <script>
+        let title = document.getElementById('title').innerText
+        //alert(title)
+        document.getElementById('title').innerText = 'java'
+
+        //경고 창 3가지
+        alert('경고메시지만 보내기')
+
+        let pro = prompt('메시지 입력하는 경고창')
+        document.getElementById('title').innerText = pro
+
+        let comp = confirm('예 아니요 경고창')
+        if(comp){
+            alert('예')
+        }else{
+            alert('no')
+        }
+    </script>
+</body>
+</html>

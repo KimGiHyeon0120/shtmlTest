@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .color{
+        color: blue;
+
+    }
+</style>
+</head>
+<body>
+    <input type="button" value="클릭" onclick="create()">
+    <div id="result">
+     <span class="color">gd</span>
+    </div>
+    <script>
+        function create(){
+            let str = ''
+            for(let i = 0 ; i < 10 ; i++){
+                str += '<span class="color">경빈이 귀여웡 >_<    ' + i + '</span>'
+            }
+            alert('test')
+            document.getElementById('result').innerHTML = str
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f8;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #outputTable {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            /* 테이블의 너비를 컨테이너에 맞춤 */
+            border-collapse: collapse;
+            /* 테두리 간격 없애기 */
+            margin: 20px 0;
+            /* 위아래 마진 추가 */
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            /* 세포 주변에 회색 테두리 추가 */
+            padding: 8px;
+            /* 세포 내부의 패딩 */
+            text-align: left;
+            /* 텍스트 왼쪽 정렬 */
+            color: #333;
+            /* 글자색 설정 */
+        }
+
+        th {
+            background-color: #007BFF;
+            /* 제목 셀 배경색 설정 */
+            color: white;
+            /* 제목 글자색 흰색으로 설정 */
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+            /* 짝수 줄에 대한 배경색 설정 */
+        }
+
+        tr:hover {
+            background-color: #ddd;
+            /* 마우스 호버 시 배경색 변경 */
+        }
+    </style>
+
+</head>
+<body>
+    
+<div  class="container">
+<input type="text" id="text1"> <input type="text" id="text2"> <input type="button" value="결과 출력" onclick="result()">
+<br>
+<div id="result"></div>
+
+<hr>
+<h1>구구단 만들기 
+    <input type="button" value="구구단 생성 버튼" onclick="result1()">
+    <input type="button" value="구구단 지우기 버튼" onclick="result2()">
+</h1>
+<div id="result1"> <span id="sss">구구단 출력구간</span> </div>
+</div>
+<script>
+    function result(){
+        let num1 = document.getElementById('text1')
+        let num2 = document.getElementById('text2')
+        let result = document.getElementById('result')
+        let str = ''
+        str += '<table>'
+             str += '<th>' + Number(num1.value) +'단'
+            for(let i = 1 ; i < Number(num2.value)+1 ; i++){
+                str += '<tr> <td>'+ Number(num1.value) + ' * ' + i  + ' = ' + (Number(num1.value) * i) +'</td></tr>'
+            }
+
+            str += '</h>'
+            str += '</table>'
+            document.getElementById('result').innerHTML = str
+    }
+    function result1(){
+        let str = ''
+            str += '<table>'
+            for(let j = 1 ; j < 10 ; j++){
+                str += '<tr> <th colspan = "9">' + j + '단 </th> </tr>'
+                for(let i = 1 ; i < 10 ; i++)
+                str += '<td id="sss">' + (j * i) + '</td>'
+            }
+            str += '</table>'
+            document.getElementById('result1').innerHTML = str
+    }
+    function result2(){
+            let str = ''
+            document.getElementById('result1').innerHTML = str
+    }
+
+</script>
+
+</body>
+</html>
