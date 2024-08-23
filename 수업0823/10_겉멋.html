@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onkeydown="test(event)">
+    
+    <input type="button" value="전송" class="btn" >
+    <script>
+        function test(e){
+            console.log(e.keyCode)
+            /* 엔터키로 작동하게 만들기 */
+            if(e.keyCode == 13){
+                result();
+            }
+        }
+        function result(){
+            alert('dd')
+        }
+
+        // 이벤트 생성
+       let btn =  document.querySelector('.btn') //element로 부른다
+       btn.addEventListener('click',result)
+    </script>
+</body>
+</html>

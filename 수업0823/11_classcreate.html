@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+        }
+        .box {
+            margin: 100px;
+            margin-top: 200px;
+            width: 150px;
+            height: 150px;
+            border: 3px solid black;
+            background-color: deeppink;
+            transition: width 2s, height 2s , border-radius 2s, animation 2s ,background-image 2s;
+            
+        }
+        .wid {
+            width: 80vh;
+        }
+        .hei {
+            height: 80vh;
+        }
+        .rad {
+            border-radius: 35%;
+        }
+        .imag{
+            background-image: url(../img/dark.jpg);
+        }
+
+
+        .animation2 {
+
+            animation: buffer 0.7s infinite alternate;
+        }
+
+        @keyframes buffer {
+
+            0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    10% {
+        transform: translate(10px, -20px) rotate(36deg);
+    }
+    20% {
+        transform: translate(20px, -40px) rotate(72deg);
+    }
+    30% {
+        transform: translate(30px, -60px) rotate(108deg);
+    }
+    40% {
+        transform: translate(40px, -80px) rotate(144deg);
+    }
+    50% {
+        transform: translate(50px, -100px) rotate(180deg);
+    }
+    60% {
+        transform: translate(60px, -80px) rotate(216deg);
+    }
+    70% {
+        transform: translate(70px, -60px) rotate(252deg);
+    }
+    80% {
+        transform: translate(80px, -40px) rotate(288deg);
+    }
+    90% {
+        transform: translate(90px, -20px) rotate(324deg);
+    }
+    100% {
+        transform: translate(100px, 0) rotate(360deg);
+    }
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+    <input type="button" id="btn1" value="너비 늘리기">
+    <input type="button" id="btn2" value="높이 늘리기">
+    <input type="button" id="btn3" value="둥글게 만들기">
+    <input type="button" id="btn4" value="돌리기">
+    <input type="button" id="btn5" value="움직이기">
+    <input type="button" id="btn6" value="랜덤" onclick="random()">
+    <div class="box"></div>
+    <script>
+        // class 생성 방법
+        // element.classList.add([클래스 명칭]);
+
+        // class 삭제 방법
+        // element.classList.remove([클래스 명칭]);
+
+        // class 존재 유무 확인
+        // element.classList.contains([클래스 명칭]);
+
+        
+        document.getElementById('btn1').addEventListener('click',wid);
+        document.getElementById('btn2').addEventListener('click',hei);
+        document.getElementById('btn3').addEventListener('click',rad);
+        document.getElementById('btn4').addEventListener('click',imag);
+        document.getElementById('btn5').addEventListener('click',animation2);
+
+
+        function wid(){
+            let box = document.querySelector('.box'); 
+            if(box.classList.contains('wid')){
+                box.classList.remove('wid');
+            }else{
+                box.classList.add('wid');
+            }
+        }
+        function hei(){
+            let box = document.querySelector('.box'); 
+            if(box.classList.contains('hei')){
+                box.classList.remove('hei');
+            }else{
+                box.classList.add('hei');
+            }
+        }
+
+        function rad(){
+            let box = document.querySelector('.box'); 
+            if(box.classList.contains('rad')){
+                box.classList.remove('rad');
+            }else{
+                box.classList.add('rad');
+            }
+        }
+        function imag(){
+            let box = document.querySelector('.box'); 
+            if(box.classList.contains('imag')){
+                box.classList.remove('imag');
+            }else{
+                box.classList.add('imag');
+            }
+        }
+        function animation2(){
+            let box = document.querySelector('.box'); 
+            if(box.classList.contains('animation2')){
+                box.classList.remove('animation2');
+            }else{
+                box.classList.add('animation2');
+            }
+        }
+
+        async function random(){
+
+            let conts =0;
+
+            let mov = setInterval(function() {
+                let randomcoun = parseInt(Math.random()*5);
+                    console.log(conts);
+                    switch (randomcoun ){
+                    case 0:
+                        wid();
+                        break;
+                    case 1:
+                        hei();
+                        break;
+                    case 2:
+                        rad();
+                        break;
+                    case 3:
+                        imag();
+                        break;
+                    case 4:
+                        animation2();
+                        break;
+                }
+                // if(conts >= 50) {
+                //     clearInterval(mov) ;
+                // }
+                // conts++;
+            }, 400);
+            
+        }
+
+    </script>
+</body>
+</html>
