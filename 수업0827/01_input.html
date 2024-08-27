@@ -19,6 +19,7 @@
     </select>
     
     <script>
+        // e.target  === op = document.getElementById('menu01')
         let op2 = document.getElementById('menu02')
         op2.innerHTML = '<option>아메리카노</option> <option>아이스 아메리카노</option>'
         function send(){
@@ -28,7 +29,6 @@
         function box(){
             let op = document.getElementById('menu01').value
             let op2 = document.getElementById('menu02')
-            op2.innerHTML = '<option>아메리카노</option> <option>아이스 아메리카노</option>'
             console.log(op)
             if(op == 'cof'){
                 op2.innerHTML = '<option>아메리카노</option> <option>아이스 아메리카노</option>'
