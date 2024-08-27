@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input CSS</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .main {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .input_form {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+
+        /** 제목 영역 */
+        .input_form .form_title {
+            margin: 20px;
+        }
+
+        /* div {
+            border: 1px solid #000;
+        } */
+        .input_form .input_text {
+            margin-top: 20px;
+        }
+
+        .input_form .input_text span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .input_form .inp01 {
+            padding: 15px;
+            border: 1px solid #000;
+            border-radius: 8px;
+
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .input_form .wid15 {
+            width: 150px;
+        }
+
+        .input_form .margin20 {
+            margin: 0px 20px;
+        }
+
+        /** 입력2 공간 */
+        
+        .area_second {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between
+        }
+        .area_second, .area_second div {
+            margin-top: 20px;
+            height: 100px;
+        }
+        .area_second div {
+            width: 300px;
+            display: block;
+        }
+        .area_second span {
+            display: block;
+        }
+
+        .test {
+            background-color: red;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <!-- form 영역 -->
+        <div class="input_form">
+            <div class="form_title">
+                <h1>회원 가입</h1>
+            </div>
+
+            <!-- input 창 -->
+            <div class="input_text margin20">
+                <span>입력 1</span>
+            </div>
+            <div class="input_area margin20">
+                <input type="text" class="inp01">
+            </div>
+            <div class="area_second">
+                <div class="second01">
+                    <span class="test">입력2</span>
+                    <input type="text" class="inp01 test">
+                </div>
+                <div class="second02">
+                    <span>입력3</span>
+                    <input type="text" class="inp01">
+                </div>
+            </div>
+  
+
+        </div>
+    </div>
+</body>
+
+</html>
