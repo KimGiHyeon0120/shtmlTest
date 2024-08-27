@@ -20,10 +20,13 @@
 
         // 첫번째 방법
         function changeImage(e){
+            // getElementById방법
             let targetvalue = document.getElementById('foodImg').value
             document.querySelector('displayed').src = imgArr[targetvalue]
 
-            alert(e.target.value)      
+            
+            // querySelector방법
+            // #은 id를 의미한다
             document.querySelector('#displayed').src = imgArr[e.target.value]
         }
 
