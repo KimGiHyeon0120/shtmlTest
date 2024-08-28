@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="전체" onclick="result('all')">
+    <input type="button" value="서울" onclick="result('seoul')">
+    <input type="button" value="부산" onclick="result('busan')">
+
+    <script>
+        let obj = {
+            list:[
+                {
+                    adress: 'seoul',
+                    food: '불고기'
+                },
+                {
+                    adress: 'seoul',
+                    food: '배고파'
+                },
+                {
+                    adress: 'seoul',
+                    food: '떡볶이'
+                },
+                {
+                    adress: 'seoul',
+                    food: '먹고싶어'
+                },
+                {
+                    adress: 'busan',
+                    food: '국밥'
+                },
+                {
+                    adress: 'busan',
+                    food: '배가고파'
+                },
+                {
+                    adress: 'busan',
+                    food: '너무 배고파'
+                },
+                {
+                    adress: 'busan',
+                    food: '헝그리'
+                },
+            ]
+        }
+
+        //배열로 변경
+        let list = obj.list;
+
+        // for(let i = 0; i<list.length ; i++){
+        //     console.log('adress: ', list[i].adress)
+        //     console.log('food: ', list[i].food)
+        // }
+
+
+
+
+        // 강사님이 짠거
+        function result(a){
+            console.log('버튼클릭')
+            for(let i = 0; i<list.length ; i++){
+                if(a === list[i].adress || a === 'all'){
+                    console.log('food: ', list[i].food)
+                }
+            }
+
+
+            
+
+
+
+
+
+            // 내가 짠거
+            // if(a === 'all'){
+            //     for(let i = 0; i<list.length ; i++){
+            //     console.log('adress: ', list[i].adress)
+            //     console.log('food: ', list[i].food)
+            //     }
+            // }else if(a === 'seoul'){
+            //     for(let i = 0; i<list.length ; i++){
+            //         if(list[i].adress === '서울')
+            //             console.log('food: ', list[i].food)
+            //     }
+            // }else if(a === 'busan'){
+            //     for(let i = 0; i<list.length ; i++){
+            //         if(list[i].adress === '부산')
+            //             console.log('food: ', list[i].food)
+            //     }
+            // }
+        }
+    </script>
+    
+</body>
+</html>

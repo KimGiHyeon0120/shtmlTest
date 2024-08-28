@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //값 바로 넣기
+        let obj = {'a' : 'apple', 'b' : 'banana','c' : 'candy'};
+
+        //for문으로 Object안에 값을 다 뽑고 싶을때 사용
+        for(const [key,value] of Object.entries(obj)){
+            console.log('key:',key)
+            console.log('value:', value)
+        }
+    </script>
+</body>
+</html>

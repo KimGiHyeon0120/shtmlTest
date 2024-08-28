@@ -24,6 +24,9 @@
             obj.div = parseFloat(num1)/parseFloat(num2)
             obj.minus = Number(num1) - Number(num2);
             obj.mul = Number(num1) * Number(num2);
+            //똑같은 key가 두번 되었을 대, 마지막 값이 저장
+            // 숫자 큰게 앞으로 하고 싶을때
+            // obj.div = (num1>num2)?num1/num2 : num2/num1
             obj.plus = Number(num1) + Number(num2);
             console.log(obj)
 
