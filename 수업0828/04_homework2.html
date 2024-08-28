@@ -67,6 +67,7 @@
             vertical-align: middle;
             cursor: pointer;
         }
+        
     </style>
 </head>
 
@@ -110,7 +111,6 @@
             }
         }
         function picmain(imgsrc){
-            let str = '';
             console.log(imgsrc)
             document.getElementById('main').innerHTML = '<img src="' + list[imgsrc].pic + '" onclick="picmain()">'
         }

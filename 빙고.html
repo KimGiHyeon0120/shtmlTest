@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Simulation</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        .qw{
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bingo Simulation</h2>
+    <p>각 칸에 0 또는 1을 입력하세요.</p>
+    <table id="bingoBoard">
+        <!-- Bingo board buttons will be generated here -->
+    </table>
+    <button class="qw" onclick="calculateAndContinue()">결과 계산</button>
+    <button class="qw" onclick="resetBoard()">초기화</button>
+    <p>예상 빙고 수: <span id="expectedBingo"></span></p>
+
+    <script>
+        const s = new Map(); // 사용하지 않는 상태에 대해 메모리를 절약하기 위해 Map을 사용
+        const p = new Map();
+
+        function score(state) {
+            const a = Array.from({ length: 5 }, (_, i) =>
+                Array.from({ length: 5 }, (_, j) => (state & (1 << (i * 5 + j))) > 0)
+            );
+            let score = 0;
+            for (let i = 0; i < 5; i++) {
+                if (a[i][0] && a[i][1] && a[i][2] && a[i][3] && a[i][4]) score++;
+                if (a[0][i] && a[1][i] && a[2][i] && a[3][i] && a[4][i]) score++;
+            }
+            if (a[0][0] && a[1][1] && a[2][2] && a[3][3] && a[4][4]) score++;
+            if (a[0][4] && a[1][3] && a[2][2] && a[3][1] && a[4][0]) score++;
+            return score;
+        }
+
+        async function f(state) {
+            if (s.has(state)) return s.get(state);
+            if (popcount(state) == 16) {
+                const scoreResult = score(state);
+                s.set(state, scoreResult);
+                return scoreResult;
+            }
+
+            let maxScore = -Infinity;
+            let bestPosition = -1;
+            let c = 1.0 / (24 - popcount(state));
+            for (let i = 0; i < 25; i++) {
+                if (!(state & (1 << i))) {
+                    state |= (1 << i);
+                    let now_score = 0;
+                    for (let j = 0; j < 25; j++) {
+                        if (!(state & (1 << j))) now_score += c * (await f(state | (1 << j)));
+                    }
+                    state ^= (1 << i);
+                    if (now_score > maxScore) {
+                        maxScore = now_score;
+                        bestPosition = i;
+                    }
+                }
+            }
+            s.set(state, maxScore);
+            p.set(state, bestPosition);
+            return maxScore;
+        }
+
+        function popcount(x) {
+            return x.toString(2).split('0').join('').length;
+        }
+
+        function initializeBoard() {
+            const board = document.getElementById('bingoBoard');
+            board.innerHTML = ''; // 초기화 시 기존 테이블 제거
+            for (let i = 0; i < 5; i++) {
+                const row = board.insertRow();
+                for (let j = 0; j < 5; j++) {
+                    const cell = row.insertCell();
+                    const button = document.createElement('button');
+                    button.id = `cell-${i}-${j}`;
+                    button.textContent = '0';
+                    button.onclick = () => toggleCell(i, j);
+                    cell.appendChild(button);
+                }
+            }
+            document.getElementById('expectedBingo').textContent = ''; // 예상 빙고 수 초기화
+        }
+
+        function toggleCell(i, j) {
+            const button = document.getElementById(`cell-${i}-${j}`);
+            button.textContent = button.textContent === '0' ? '1' : '0';
+        }
+
+        function getStateFromBoard() {
+            let state = 0;
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < 5; j++) {
+                    const cellValue = parseInt(document.getElementById(`cell-${i}-${j}`).textContent);
+                    state |= (cellValue << (i * 5 + j));
+                }
+            }
+            return state;
+        }
+
+        function updateBoardWithState(state) {
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < 5; j++) {
+                    const isFilled = (state & (1 << (i * 5 + j))) > 0;
+                    document.getElementById(`cell-${i}-${j}`).textContent = isFilled ? '1' : '0';
+                }
+            }
+        }
+
+        async function calculateAndContinue() {
+            let state = getStateFromBoard();
+
+            await f(state);
+
+            const expectedBingo = document.getElementById('expectedBingo');
+            expectedBingo.textContent = s.get(state);
+
+            const targetCell = p.get(state);
+            const targetRow = Math.floor(targetCell / 5);
+            const targetCol = targetCell % 5;
+
+            // 다음 최적의 위치에 '1'을 넣어 자동으로 업데이트
+            document.getElementById(`cell-${targetRow}-${targetCol}`).textContent = '1';
+
+            // 새로운 상태를 다시 계산
+            state |= (1 << targetCell);
+            updateBoardWithState(state);
+
+            // 이전 강조 색상 제거
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < 5; j++) {
+                    document.getElementById(`cell-${i}-${j}`).classList.remove('highlight');
+                }
+            }
+
+            // 다음 최적의 위치를 강조 표시
+            document.getElementById(`cell-${targetRow}-${targetCol}`).classList.add('highlight');
+        }
+
+        function resetBoard() {
+            initializeBoard();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            s.set(0, 3.22786);
+            p.set(0, 12);
+            initializeBoard();
+        });
+    </script>
+</body>
+</html>

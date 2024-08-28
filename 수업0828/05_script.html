@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="add">sss
+
+    </div>
+    <script>
+        function fu1(){
+            console.log('fu1');
+        }
+        fu1();
+        let fu2 = function(){
+            console.log('fu2');
+        }
+        fu2();
+        document.querySelector('.add').addEventListener('click', function() {})
+        document.querySelector('.add').addEventListener('click', fu2)
+
+        let fu3 = () => {
+            console.log('fu3')
+        }
+        fu3();
+
+
+
+
+        start(1);
+        function start(num1){
+            console.log(num1)
+        }
+        // 매개변수가 1개 담겨질 때 소괄호 생략 가능하다
+        let fu4 = num1 => {
+            console.log('num1 : ', num1)
+        }
+        fu4(43);
+
+
+        start2(1,5);
+        function start2(num1,num2){
+            console.log(num1+num2)
+        }
+        let fu5 = (num1,num2) => {
+            console.log(num1+num2)
+        }
+        fu5(43,1);
+
+        // 함수 표현식 사용할 때 주의사항
+        // 함수 표현식 사용할 대, 무조건 함수가 우선적으로 선언되어야 한다
+    </script>
+
+</body>
+</html>

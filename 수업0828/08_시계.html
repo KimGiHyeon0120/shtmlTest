@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script lang="javascript">
+        var start = new Date;
+        function showClock(){
+            var crrDate = new Date();
+            var divClock = document.getElementById('divClock');
+            var since = Math.ceil((crrDate-start)/1000)
+
+            var msg= "현재시간 : " + crrDate.getHours() + "시 ";
+            msg+= crrDate.getMinutes() + "분 ";
+            msg+= crrDate.getSeconds() + "초\n";
+            msg+= "접속 후 " + since + "초 경과";
+
+            divClock.innerText = msg;
+            setTimeout(showClock,1000)
+        }
+    </script>
+</head>
+<body onload="showClock()">
+    <div id="divClock" class="clock">
+
+    </div>
+    
+</body>
+</html>

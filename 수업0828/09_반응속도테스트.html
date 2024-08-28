@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        .click{
+            width: 100vh;
+            height: 300px;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <h1>반응속도 테스트</h1>
+    <div id="speed">
+        <div class="click" style="background-color: rgb(255, 255, 0);">
+            <div class="text">
+                Start
+            </div>
+        </div>
+    </div>
+    <input type="button" value="게임 시작" onclick="startGame();">
+    <input type="button" value="다시 시작" onclick="resetTest();">
+    <p>걸린시간: <span id="time1"></span> ms</p>
+    <div id="records"></div>
+    
+    <script>
+        let startTime;
+        let endTime;
+        let reactionTimes = [];
+        let gameActive = false; // 게임 활성화 상태를 관리하는 변수
+
+        function click1() {
+            if (document.querySelector('.text').textContent === "Click" && gameActive) {
+                endTime = new Date().getTime();
+                let reactionTime = endTime - startTime;
+                document.getElementById('time1').textContent = reactionTime;
+                reactionTimes.push(reactionTime);
+                displayRecords();
+
+                if (reactionTimes.length === 5) {
+                    displayAverageAndStop();
+                } else {
+                    start(); // 기록을 남긴 후 준비화면으로 돌아감
+                }
+            } else if (document.querySelector('.text').textContent === "Ready" && gameActive) {
+                alert("다시 시작 버튼을 눌러주세요"); // 알림창 표시
+                gameActive = false; // 게임 비활성화
+            }
+        }
+
+        function startGame() {
+            gameActive = true; // 게임 활성화
+            start(); // "게임 시작" 버튼을 누르면 Ready 화면으로 전환
+        }
+
+        function start() {
+            let randomTime = Math.random() * 10;
+            document.getElementById('speed').innerHTML = '<div class="click" onclick="click1()" style="background-color: rgb(255, 0, 0);"><div class="text">Ready</div></div>';
+            setTimeout(function() {
+                if (gameActive) { // 게임이 활성화된 경우에만 speedtest 호출
+                    speedtest();
+                }
+            }, Math.ceil(randomTime) * 1000);
+        }
+
+        function speedtest() {
+            document.getElementById('speed').innerHTML = '<div class="click" onclick="click1()" style="background-color: rgb(0, 255, 0);"><div class="text">Click</div></div>';
+            startTime = new Date().getTime();
+        }
+
+        function displayRecords() {
+            let recordsDiv = document.getElementById('records');
+            recordsDiv.innerHTML = '';
+            reactionTimes.forEach((time, index) => {
+                let record = document.createElement('p');
+                record.textContent = `기록 ${index + 1}: ${time} ms`;
+                recordsDiv.appendChild(record);
+            });
+        }
+
+        function displayAverageAndStop() {
+            let sum = reactionTimes.reduce((a, b) => a + b, 0);
+            let average = sum / reactionTimes.length;
+            alert(`평균 반응 시간: ${average.toFixed(2)} ms`);
+            gameActive = false; // 게임 비활성화
+        }
+
+        function resetTest() {
+            reactionTimes = [];
+            gameActive = false; // 게임 비활성화
+            document.getElementById('time1').textContent = '';
+            document.getElementById('records').innerHTML = '';
+            document.getElementById('speed').innerHTML = '<div class="click" style="background-color: rgb(255, 255, 0);"><div class="text">Start</div></div>';
+        }
+    </script>
+</body>
+
+
+</html>
