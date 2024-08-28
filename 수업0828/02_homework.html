@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="text1" placeholder="숫자1"><br><input type="text" id="text2" placeholder="숫자2">
+    <br>
+    <input type="button" value="계산" onclick="click1()">
+
+    <script>
+        let obj = {};
+
+        function click1(){
+            let num1 = document.getElementById('text1').value
+            let num2 = document.getElementById('text2').value
+            obj.div = parseFloat(num1)/parseFloat(num2)
+            obj.minus = Number(num1) - Number(num2);
+            obj.mul = Number(num1) * Number(num2);
+            obj.plus = Number(num1) + Number(num2);
+            console.log(obj)
+
+        }
+    </script>
+</body>
+</html>

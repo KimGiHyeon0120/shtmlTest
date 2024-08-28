@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <input type="button" value="출력" onclick="click1()">
+    <span id="result">여기에 출력 (obj2의 address ) </span>
+
+    <script>
+        //json ( key, value ) java: hashmap.
+        //JavaScript Object (네트워크에서 데이터를 주고받을 때, 기본으로 사용하는 데이터 타입 중 1개.)
+        
+        //XML. 테그형식으로 데이터를 주고 받는다. ( 불편 하다. ) => 보완한 것이 JSON.
+        let obj1 = {}; //중괄호: JSON (OBJECT).
+
+        //object 사용하는 이유, 데이터 정리.
+        //getterSetter하고 비슷한 역할.
+        //obj사용할 때, 주의사항.
+        //데이터타입이 정의가 안되있어서, value에는 그냥 모두 다 들어갑니다.
+        //<div class="name"></div>
+        //json안에 배열도 선언 가능
+        //json안에 function 선언 가능 합니다.
+        obj1.a = 'apple';
+        obj1.b = 'banana';
+        obj1.fun = start;
+        console.log(typeof(obj1), obj1);
+
+
+        let arr = ['a', 'b', 'c'];
+        obj1.arr = arr;
+        console.log(obj1);
+
+        //Object 2번째 방법
+        let obj2 = new Object();
+        //arr[0] //[괄호안에 숫자가 들어가면 index] => Array
+        //arr['0'] //괄호 안에 문자가 들어가면 key => Object
+        obj2['apple'] = 'apple';
+        obj2['b'] = 'banana';
+        obj2.address = '서울';
+        console.log(obj2);
+        console.log('===============');
+        obj1.obj = obj2;
+        console.log(obj1);
+
+
+        function click1(){
+            document.getElementById('result').innerText = obj1.obj.address
+        }
+
+        function start() {
+            alert('start');
+            console.log('start');
+        }
+
+        //Java 형태
+        // Meh me = new Meh();
+        // me.name = "홍길동";
+
+        // class Meh {
+        //     String name;
+        // }
+    </script>
+</body>
+</html>
