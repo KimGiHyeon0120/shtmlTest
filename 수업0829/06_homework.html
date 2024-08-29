@@ -133,7 +133,7 @@
             <span class="title">설문조사</span>
         </div>
         <div class="report_area">
-            <label class="subtitle">참여자: </label><input type="text" id="userName">
+            <label class="subtitle">참여자: </label><input type="text" id="username">
         </div>
         <div class="report_area">
             <label class="subtitle">좋아하는 도시: </label>
@@ -159,10 +159,74 @@
             <input type="button" class="btn-red btn02" value="초기화" onclick="reset()">
         </div>
     </div>
+    <script src="../lib/jquery3.7.1.min.js"></script>
     <script>
+
+        //체크 되었을대 input창 열기
+        $('input[name="bestCity"]').change(function () {
+            if ($(this).val() === '6') {
+                $('#inp_bestCity').prop('disabled', false);
+            } else {
+                $('#inp_bestCity').prop('disabled', true);
+                $('#inp_bestCity').val('');
+            }
+        });
+
+
         function send() {
-            let name = $('#userName').val()
-            console.log(name)
+
+            // 유효성검사
+            if ($('#username').val() != '' && $('input[name="bestCity"]:checked').val() && $('input[name="bestReason"]:checked').val()) {
+
+                //참여자 이름 뽑기
+                console.log('참여자 : ', $('#username').val())
+
+
+                //좋아하는 도시 뽑기
+                let city = $('input[name="bestCity"]')
+                for (let i = 0; i < city.length; i++) {
+                    if (city[i].checked == true) {
+                        if (city[i].value === '6') {
+                            console.log('좋아하는 도시: ', $('#inp_bestCity').val())
+                        }
+                        else {
+                            console.log('좋아하는 도시: ', city[i].value);
+                        }
+                    }
+                }
+
+
+                //좋아하는 이유 뽑기
+                let why = $('input[name="bestReason"]:checked');
+                for (let i = 0; i < why.length; i++) {
+                    if (why[i].checked == true) {
+                        console.log('좋아하는 이유: ', why[i].value);
+                    }
+                }
+
+
+            } else {
+                alert('다시 정확하게 체크및 입력해주세요')
+                $('#username').val('');
+                $('input[name="bestCity"]').prop('checked', false)
+                $('#inp_bestCity').prop('disabled', true);
+                $('#inp_bestCity').val('');
+                $('input[name="bestReason"]').prop('checked', false)
+            }
+        }
+
+
+        //초기화 버튼 참여자 이름, 그 외 선택후 적은 input창까지
+        function reset() {
+            let aler = confirm('처음부터 다시 작성하시겠습니까?')
+            if (aler) {
+                $('#username').val('');
+                $('input[name="bestCity"]').prop('checked', false)
+                $('#inp_bestCity').prop('disabled', true);
+                $('#inp_bestCity').val('');
+                $('input[name="bestReason"]').prop('checked', false)
+            }
+
         }
     </script>
 
