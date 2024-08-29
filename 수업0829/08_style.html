@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 만들기</title>
+    <style>
+        /* .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .yellow {
+            background-color: yellow;
+        } */
+
+        .dd {
+            margin: 15px;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <input type="radio" name="color" value="red">빨강색
+    <input type="radio" name="color" value="yellow">노랑색
+    <input type="radio" name="color" value="blue">파랑색
+    <input type="radio" name="color" value="green">초록색
+    <br />
+    <div name="dd" class="dd"></div>
+    <div name="dd" class="dd"></div>
+    <div name="dd" class="dd"></div>
+    <div name="dd" class="dd"></div>
+</body>
+<script src="../lib/jquery3.7.1.min.js"></script>
+<script>
+    $('input[name="color"]').on('change', function () {
+        let color = $('input[name="color"]:checked').val()
+        //font-size => 자바스크립트에서는 '-' 사용할 수 없음 cameclass 문법으로 변경
+        //font-size => fontSize
+        //css('css명칭', css값);
+        $('div.dd').css('backgroundColor', '')
+        $('div.dd').css('backgroundColor', color)
+    })
+</script>
+
+</html>
