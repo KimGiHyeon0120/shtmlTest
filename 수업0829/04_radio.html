@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>좋아하는 계절</h1>
+    <input type="radio" name="season" value="spring" id="">봄
+    <input type="radio" name="season" value="summer" id="">여름
+    <input type="radio" name="season" value="fail" id="">가을
+    <input type="radio" name="season" value="winter" id="">겨울
+    <input type="button" value="전송1" onclick="send1()">
+    <input type="button" value="전송2" onclick="send2()">
+    <input type="button" value="전송3" onclick="send3()">
+    <script src="../lib/jquery3.7.1.min.js"></script>
+    <script>
+        //javascript 불러오는 방법
+        function send1() {
+            let radio = document.getElementsByName('season'); //getElements => return은 배열
+            //무엇이 선택 되었는지 확인하고 싶습니다.
+            for (let i = 0; i < radio.length; i++) {
+                //선택 값을 확인하고 싶습니다.
+                if (radio[i].checked == true) // => (radio[i].checked = > true)
+                {
+                    console.log('선택 된 값 : ', radio[i].value);
+                }
+            }
+        }
+
+        function send2() {
+            let radio = $('input[name="season"]')
+            //무엇이 선택 되었는지 확인하고 싶습니다.
+            /*
+            name은 테그를 통해서 불러옵니다
+            위 방법이 싫다. 그러면 class를 임시로 지정
+            $('.inputRadio')
+            */
+            for (let i = 0; i < radio.length; i++) {
+                //선택 값을 확인하고 싶습니다.
+                if (radio[i].checked == true) // => (radio[i].checked = > true)
+                {
+                    console.log('선택 된 값 : ', radio[i].value);
+                }
+            }
+        }
+        function send3(){
+            /*
+            input[name="season"]:checked => input에서 check된 input만 불러옵니다
+            */
+           let result = $('input[name="season"]:checked').val()
+           console.log('선택 된 값 : ', result);
+        }
+    </script>
+
+</body>
+
+</html>

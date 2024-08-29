@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좋아하는 목록</title>
+
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-image: url('../img/tree04.jpg');
+        }
+
+        .report {
+            padding: 40px;
+
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px solid #000;
+            border-radius: 20px;
+        }
+
+        .report .title {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .report .title_area {
+            margin-bottom: 30px;
+        }
+
+        .report label {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .report .subtitle {
+            margin-right: 30px;
+        }
+
+        .report .subtitle:before {
+            content: '*';
+            color: red;
+        }
+
+        .report .report_area {
+            margin: 15px 0px;
+            height: 50px;
+        }
+
+        .report .report_area input[type="text"] {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            width: 150px;
+            border-radius: 8px;
+
+            cursor: pointer;
+        }
+
+        .report .report_area input[type="text"]:hover,
+        .report .report_area input[type="text"]:focus {
+            outline: none;
+            border: 3px solid #3CB371;
+        }
+
+        .report .report_area input[type="radio"],
+        .report .report_area input[type="radio"]+label,
+        .report .report_area input[type="checkbox"],
+        .report .report_area input[type="checkbox"]+label {
+            margin: 8px;
+            cursor: pointer;
+        }
+
+        .report .report_area input[type="radio"]:checked+label,
+        .report .report_area input[type="checkbox"]:checked+label {
+            color: blue;
+        }
+
+        .btn_area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .btn-cyan {
+            background: rgba(27, 188, 194, 1);
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(27, 188, 194, 1)), to(rgba(24, 163, 168, 1)));
+            background: -webkit-linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            background: -moz-linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            background: -o-linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            background: linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+        }
+
+        .btn-red {
+            background: rgba(250, 90, 90, 1);
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(250, 90, 90, 1)), to(rgba(232, 81, 81, 1)));
+            background: -webkit-linear-gradient(rgba(250, 90, 90, 1) 0%, rgba(232, 81, 81, 1) 100%);
+            background: -moz-linear-gradient(rgba(250, 90, 90, 1) 0%, rgba(232, 81, 81, 1) 100%);
+            background: -o-linear-gradient(rgba(250, 90, 90, 1) 0%, rgba(232, 81, 81, 1) 100%);
+            background: linear-gradient(rgba(250, 90, 90, 1) 0%, rgba(232, 81, 81, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa5a5a', endColorstr='#e85151', GradientType=0);
+        }
+
+        .btn_area .btn02 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-radius: 10px;
+            padding: 15px;
+            width: 450px;
+            height: 90px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="report">
+        <div class="title_area">
+            <span class="title">설문조사</span>
+        </div>
+        <div class="report_area">
+            <label class="subtitle">참여자: </label><input type="text" id="userName">
+        </div>
+        <div class="report_area">
+            <label class="subtitle">좋아하는 도시: </label>
+            <input type="radio" name="bestCity" value="서울" id="city01"><label for="city01">서울</label>
+            <input type="radio" name="bestCity" value="인천" id="city02"><label for="city02">인천</label>
+            <input type="radio" name="bestCity" value="대전" id="city03"><label for="city03">대전</label>
+            <input type="radio" name="bestCity" value="부산" id="city04"><label for="city04">부산</label>
+            <input type="radio" name="bestCity" value="광주" id="city05"><label for="city05">광주</label>
+            <input type="radio" name="bestCity" value="6" id="city06"><label for="city06">그 외</label>
+            <input type="text" id="inp_bestCity" disabled>
+        </div>
+        <div class="report_area">
+            <label class="subtitle">좋아하는 이유: </label>
+            <input type="checkbox" name="bestReason" value="먹거리" id="res01"><label for="res01">먹거리</label>
+            <input type="checkbox" name="bestReason" value="레저" id="res02"><label for="res02">레저</label>
+            <input type="checkbox" name="bestReason" value="힐링" id="res03"><label for="res03">힐링</label>
+            <input type="checkbox" name="bestReason" value="교통" id="res04"><label for="res04">교통</label>
+            <input type="checkbox" name="bestReason" value="쇼핑" id="res05"><label for="res05">쇼핑</label>
+            <input type="checkbox" name="bestReason" value="관광" id="res06"><label for="res06">관광</label>
+        </div>
+        <div class="btn_area">
+            <input type="button" class="btn-cyan btn02" value="제출" onclick="send()">
+            <input type="button" class="btn-red btn02" value="초기화" onclick="reset()">
+        </div>
+    </div>
+    <script>
+        function send() {
+            let name = $('#userName').val()
+            console.log(name)
+        }
+    </script>
+
+</body>
+
+</html>
