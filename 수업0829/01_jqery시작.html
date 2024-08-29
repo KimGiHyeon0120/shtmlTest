@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="user" value="hello">
+    <script src="../lib/jquery3.7.1.min.js"></script>
+    <script>
+        // jquery는 $로 시작
+        // #은 아이디를 의미
+        let jq = $('#user').val();
+        // console.log(jq)
+
+
+
+        console.log($('#user'))
+        console.log(document.querySelectorAll('#user'))
+
+
+        console.log($('input'))
+        /*
+        둘이 같은 의미
+        jquery = $('#id')
+        javascript = document.querySelectorAll('#id')
+
+
+        jquery하고 javascript하고 병행해서 사용해도 됩니다
+        jquery는  javascript의 ㅋ모드를 요약해서 사용한다
+         jquery는 불러올때 '$'를 통해서 불러오는데
+         불러올때 배열로 불러온다 
+         ( 만약, 값이 한 개일 경우 단일로 불러와서 헷깔린다 )
+
+         javascript하고 jquery 비교 했을 때, 우선 순위 ( javascript ) 공부하시는 것이 매우 좋습니다
+         javascript ( 바닐라 ) = jquery, react, vue ( 파생 ), ( js가 불편해서 만든 언어들 )
+         퍼포먼스는 무슨 언어든 비슷 애매하게 배웠을때 기준으로 javascript가 가장 빠름
+         그냥 닥치고 javascript해라
+        */
+    </script>
+</body>
+</html>

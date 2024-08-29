@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기1</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* margin 영역 */
+        .mar15 {
+            margin: 15px;
+        }
+
+        .wid70 {
+            width: 70px;
+        }
+
+        .wid100 {
+            width: 100px;
+        }
+
+        /* color 영역 */
+        .color-whilte {
+            color: white;
+        }
+
+        .inp01 {
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .inpH:hover,
+        .inpH:focus {
+            border: 3px solid #3CB371;
+            /* hover와 focus 상태에서의 테두리 색상 변경 */
+            outline: none;
+            /* focus 문제 해결 */
+        }
+
+        .btn-cyan {
+            background: rgba(27, 188, 194, 1);
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(27, 188, 194, 1)), to(rgba(24, 163, 168, 1)));
+            background: -webkit-linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            background: -moz-linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            background: -o-linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            background: linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+        }
+
+        .cur {
+            cursor: pointer;
+        }
+
+        .result {
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="main">
+    <h1 class="mar15">계산기</h1>
+    <input type="text" class="inp01 mar15 inpH" id="num1">
+    <select class="inp01 wid70 inpH" id="tkclr">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" class="inp01 mar15 inpH" id="num2">
+    <input type="button" class="inp01 wid100 btn-cyan mar15 color-whilte cur" value="전송" onclick="result()"><br />
+    <span class="mar15 result">결과출력: </span> <input type="text" class="inp01 mar15 inpH" id="result">
+</body>
+<script src="../lib/jquery3.7.1.min.js"></script>
+<script>
+    function result() {
+        let tkclr = $('#tkclr').val();
+        let num1 = $('#num1').val();
+        let num2 = $('#num2').val();
+        let result = 0;
+        if (tkclr === '+') {
+            result = Number(num1) + Number(num2)
+            $('#result').val(result)
+        } else if (tkclr === '-') {
+            result = Number(num1) - Number(num2)
+            $('#result').val(result)
+        } else if (tkclr === '*') {
+            result = Number(num1) * Number(num2)
+            $('#result').val(result)
+        } else if (tkclr === '/') {
+            if (num1 < num2) {
+                num1 = num1^num2
+                num2 = num1^num2
+                num1 = num1^num2
+            }
+            result = Number(num1) / Number(num2)
+            $('#result').val(result)
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1">
+    <input type="text" id="num2">
+    <input type="button" value="전송" onclick="send()">
+    <input type="button" value="hello" onclick="hello()">
+</body>
+<script src="../lib/jquery3.7.1.min.js"></script>
+<script>
+    
+    function send(){
+        let num1 = document.getElementById('num1').value
+        let num2 = $('#num2').val();
+        console.log('plus: ',Number(num1)+Number(num2))
+    }
+    function hello(){
+        document.getElementById('num1').value = 'hello'
+        $('#num2').val('hello')
+    }
+</script>
+</html>
