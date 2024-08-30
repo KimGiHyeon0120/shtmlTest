@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <script src="../lib/jquery3.7.1.js"></script>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 컨테이너 스타일 */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: start;
+        }
+
+        /* 카드 스타일 */
+        .card {
+            position: relative;
+
+            padding: 20px;
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            transition: box-shadow 0.3s ease;
+
+            cursor: pointer;
+        }
+
+        /* 카드에 마우스를 올렸을 때 */
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 제목 스타일 */
+        .card .title {
+            margin-bottom: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            height: 50px;
+        }
+
+        /* 내용 스타일 */
+        .card .body {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            overflow: scroll;
+        }
+
+        /* 사용자 ID와 게시글 ID 스타일 */
+        .card .info {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 12px;
+            color: #999;
+            margin-top: 15px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="listContent">
+        <!--  <div class="card">
+            <div class="title">sunt aut facere repellat provident occaecati excepturi optio reprehenderit</div>
+            <div class="body">quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit
+                molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto</div>
+            <div class="info">User ID: 1 | Post ID: 1</div>
+        </div>
+        <div class="card">
+            <div class="title">qui est esse</div>
+            <div class="body">est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores
+                neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis
+                possimus qui neque nisi nulla</div>
+            <div class="info">User ID: 1 | Post ID: 2</div>
+        </div>
+    </div>
+    -->
+        <!-- text를 위한 button -->
+        <input type="button" value="전송" onclick="send()">
+
+        <script>
+            function send() {
+                //다른 pc ( 서버 )에게 데이터를 요청하는 함수
+                //ajex는 사용할 때, jquery 라이브러리 이용해서 사용.
+                //Jquery 언어를 사용할 때는, ajex 사용을 지양 ( 호환성 문제)
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts', //요청 대상. ( 웹을 하고 있기 때문에 URL로 요청)
+                    type: 'get',    //전송 방식.(get, post 방식 구분)
+                    dataType: 'json', //요청대상으로부터 결과물을 받을 때, 언어에게 어떤 방식으로 주는 것인지 hint. text
+                    // default : text(String)
+                    success: function (list1) {
+                        let list = list1;
+
+                        if (list.length <= 0) {
+                            console.log('list 값 없음');
+                        }
+
+                        let listContent = '';
+                        for (let i = 0; i < list.length; i++) {
+                            console.log(list[0].title);
+                            console.log(list[1].body);
+
+                            listContent += `<div class="card">`;
+                            listContent += `<div class="title">${list[i].title}</div>`;
+                            listContent += ` <div class="body">${list[i].body}</div>`;
+                            listContent += ` <div class="info">User ID: 1 | Post ID: 1</div>`;
+                            listContent += `</div>`;
+                        }
+
+                        $('#listContent').html(listContent);
+
+                        //JQuery가 데이터를 주는 방식 ( javascript로 비유하면 innerHTML)    
+                        //html: 전의 내용을 모두 지우고 값 넣는다.
+                        //append : 전의 내용을 그대로 두고 마지막부터 값을 넣는 방식
+                    }
+                })
+            }
+        </script>
+</body>
+
+</html>

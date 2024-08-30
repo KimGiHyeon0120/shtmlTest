@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hi</h1>
+    <input type="button" value="url가져오기" onclick="load()">
+    <script>
+        function load() {
+            let pa = window.location.pathname
+
+            console.log('pa: ',pa)
+            let hr = window.location.href
+
+            console.log('hr: ',hr)
+            let host = window.location.host
+
+            console.log('host: ',host)
+            let search = window.location.search
+
+            console.log('search: ',search)
+            let sp = search.split('=')
+
+            console.log('key: ', sp[0].substring(1))
+            
+            console.log('value: ', sp[1])
+
+
+
+        }
+    </script>
+</body>
+
+</html>

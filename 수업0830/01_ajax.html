@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/jquery3.7.1.js"></script>
+</head>
+
+<body>
+    <input type="button" value="전송" onclick="send()">
+
+    <script>
+        function send() {
+            //다른 pc ( 서버 )에게 데이터를 요청하는 함수
+            //ajex는 사용할 때, jquery 라이브러리 이용해서 사용.
+            //Jquery 언어를 사용할 때는, ajex 사용을 지양 ( 호환성 문제)
+            $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/posts', //요청 대상. ( 웹을 하고 있기 때문에 URL로 요청)
+                type: 'get',    //전송 방식.(get, post 방식 구분)
+                dataType: 'json', //요청대상으로부터 결과물을 받을 때, 언어에게 어떤 방식으로 주는 것인지 hint. text
+                // default : text(String)
+                success: function (res) {
+                    console.log(res);
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>

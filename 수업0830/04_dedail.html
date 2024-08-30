@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Display</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* 상세 정보 컨테이너 스타일 */
+        .detail-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        /* 상세 정보 제목 스타일 */
+        .detail-container h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* 상세 정보 항목 스타일 */
+        .detail-container p {
+            margin: 15px 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* 항목의 강조 텍스트 스타일 */
+        .detail-container p strong {
+            color: #333;
+        }
+
+        /* 뒤로 가기 버튼 스타일 */
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="detail-container" class="detail-container">
+        <h2>Detail Information</h2>
+        <p><strong>Title:</strong> <span id="detail-title"></span></p>
+        <p><strong>Body:</strong> <span id="detail-body"></span></p>
+        <p><strong>User ID:</strong> <span id="detail-userId"></span></p>
+        <p><strong>Post ID:</strong> <span id="detail-id"></span></p>
+        <button id="back-button" class="back-button">뒤로가기</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let search = window.location.search
+            let sp = search.split('=')
+            console.log('key: ', sp[0].substring(1))
+            console.log('value: ', sp[1])
+            // 클릭했을 때 불러올 데이터 (예시 데이터)
+            $.ajax({
+
+                url: 'https://jsonplaceholder.typicode.com/posts/' + sp[1], //요청 대상. (웹을 하고 있기 때문에 URL로 요청)
+                type: 'get', //전송 방식. (get, post 방식 구분)
+                dataType: 'json', //요청대상으로부터 결과물을 받을 때, 언어에게 어떤 방식으로 주는 것인지 hint. text
+                //default: text(String)
+                success: function (data) {
+                    // 데이터를 HTML 요소에 삽입
+                    $("#detail-title").text(data.title);
+                    $("#detail-body").text(data.body);
+                    $("#detail-userId").text(data.userId);
+                    $("#detail-id").text(data.id);
+                }
+            })
+
+            // // 데이터를 HTML 요소에 삽입
+            // $("#detail-title").text(data.title);
+            // $("#detail-body").text(data.body);
+            // $("#detail-userId").text(data.userId);
+            // $("#detail-id").text(data.id);
+
+            $("#back-button").click(function () {
+                // 여기서ack()을 사용하거나 특정 페이지로 이동하는 window.location.href 등을 사용 가능합니다.
+                history.back(); // 브라우저의 뒤로 가기 기능을 사용하여 이전 페이지로 이동
+            });
+        });
+
+    </script>
+</body>
+
+</html>
