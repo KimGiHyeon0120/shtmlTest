@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax호출2</title>
+</head>
+<body>
+    <h1>ajax request보내기</h1>
+    <input type="text" id="userId" placeholder="이름 입력해주세요">
+    <input type="button" value="ajax호출" onclick="btn1()">
+
+    <script src="../lib/jquery3.7.1.js"></script>
+    <script>
+
+        function btn1(){
+
+            let name = document.getElementById('userId');
+
+            let obj = {'userId': name.value};
+            name.value = ''
+            name.focus()
+
+
+            //location.href = 'http://localhost:3000/db'
+            //비동기 ( 화면을 움직이지 않는다 )
+            $.ajax({
+                url: 'http://localhost:3000/get',
+                type:'get', //default는 get 이기 때문에 생략 가능
+                data: obj,
+                dataType: 'json',
+                success: function(res){
+                    console.log(res)
+                    if(res.status == 200){
+                        let list = res.list;
+                    }
+                }
+            })
+
+
+
+
+
+
+
+            //                      insert 테스트
+            // let data1 = {
+            //     'userId': name,
+            //     'kor': kor,
+            //     'eng': eng,
+            //     'math': math
+            // };
+
+            // // Clear the input fields
+            // document.getElementById('userId').value = '';
+            // document.getElementById('kor').value = '';
+            // document.getElementById('eng').value = '';
+            // document.getElementById('math').value = '';
+            // document.getElementById('userId').focus();
+
+            // //location.href = 'http://localhost:3000/db'
+            // //비동기 ( 화면을 움직이지 않는다 )
+            // $.ajax({
+            //     url: 'http://localhost:3000/get',
+            //     type: 'get', //default는 get 이기 때문에 생략 가능
+            //     data: data1,
+            //     dataType: 'json',
+            //     success: function (res) {
+            //         console.log(res)
+            //         if (res.status == 200) {
+            //             let list = res.list;
+            //         }
+            //     }
+            // })
+        }
+    </script>
+</body>
+</html>

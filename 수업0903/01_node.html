@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax호출</title>
+</head>
+
+<body>
+    <input type="button" value="ajax호출" onclick="btn1()">
+    <input type="button" value="페이지이동" onclick="move()">
+    <script src="../lib/jquery3.7.1.js"></script>
+    <script>
+        function move() {
+            location.href = '02_node.html'
+        }
+        function btn1() {
+            //location.href = 'http://localhost:3000/db'
+            //비동기 ( 화면을 움직이지 않는다 )
+            $.ajax({
+                url: 'http://localhost:3000/db',
+                type: 'get', //default는 get 이기 때문에 생략 가능
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res)
+                    if (res.status == 200) {
+                        let list = res.list;
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

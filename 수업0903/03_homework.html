@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        table {
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            border-collapse: collapse;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: top;
+            margin-top: 20px;
+        }
+
+        tr,
+        td {
+            border: 1px solid rgb(188, 247, 255);
+        }
+
+        td {
+            padding: 15px 100px;
+        }
+
+        td:nth-child(1) {
+            text-align: center;
+            padding: 15px 50px;
+            color: rgb(0, 0, 0);
+
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+            padding-left: 5px;
+            padding-right: 10px;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+        }
+
+        .q1 {
+            background-color: rgb(201, 255, 179);
+        }
+
+        .q2 {
+            background-color: rgb(214, 214, 214);
+            font-weight: bold;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .myself {
+            margin: 0;
+            padding: 0;
+        }
+
+        .myself1 {
+            padding: 0;
+            height: 100px;
+            width: 100%;
+        }
+
+        .wnals {
+            width: 80px;
+        }
+
+        .year {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="2" class="q1">
+                <h1>회원 기본 정보</h1>
+            </td>
+        </tr>
+        <tr>
+            <td class="q2">아이디:</td>
+            <td><input type="text" id="id"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
+        </tr>
+        <tr>
+            <td class="q2">비밀번호:</td>
+            <td><input type="password" id="passwd"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
+        </tr>
+        <tr>
+            <td class="q2">비밀번호 확인:</td>
+            <td><input type="password" id="passwdcheck"> <input type="button" value="확인" onclick="check()"></td>
+        </tr>
+        <tr>
+            <td class="q2">메일주소:</td>
+            <td><input type="text" id="email"> 예) id@domain.com</td>
+        </tr>
+        <tr>
+            <td class="q2">이름:</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="q1">
+                <h1>개인 신상 정보</h1>
+            </td>
+        </tr>
+        <tr>
+            <td class="q2">주민등록번호:</td>
+            <td>
+                <input type="text" class="wnals" id="wnals" maxlength="6"
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+                <span>-</span>
+                <input type="text" class="wnals" id="wnals2" maxlength="7"
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+            </td>
+        </tr>
+        <tr>
+            <td class="q2">생일:</td>
+            <td><input type="text" class="year" id="year" maxlength="4"
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');">년
+
+                <body>
+                    <select name="" id="mon">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                    </select>
+                    월
+                    <select name="" id="day">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
+                        <option>31</option>
+                    </select>
+                    일
+            </td>
+        </tr>
+        <tr>
+            <td class="q2">관심분야:</td>
+            <td>
+                <input type="checkbox" name="rhks" value="컴퓨터">컴퓨터
+                <input type="checkbox" name="rhks" value="인터넷">인터넷
+                <input type="checkbox" name="rhks" value="여행">여행
+                <input type="checkbox" name="rhks" value="영화감상">영화감상
+                <input type="checkbox" name="rhks" value="음악감상">음악감상
+            </td>
+        </tr>
+        <tr>
+            <td class="q2">자기소개:</td>
+            <td class="myself"><input type="text" class="myself1" id="self"></td>
+        </tr>
+
+    </table>
+
+    <div>
+        <input type="button" value="회원 가입" onclick="join()"> <input type="reset" value="다시 입력" onclick="reset()"><input type="button" value="로그인버튼" onclick="login()">
+    </div>
+    <script src="../lib/jquery3.7.1.js"></script>
+    <script>
+        let pawch = 0;
+
+
+        /*비빌번호 확인버튼*/
+        function check() {
+            let idd = document.getElementById('id').value;
+            let paw = document.getElementById('passwd').value
+            let paw2 = document.getElementById('passwdcheck').value
+
+            /*비밀번호 유효성검사*/
+            const pwEng = /^[a-zA-Z0-9]+$/;
+            if (paw == "" || paw.length < 4 || paw.length > 12 || !pwEng.test(paw)) {
+                alert("비밀번호를 4~12자의 영문 대소문자와 숫자로만 입력해주세요.");
+                document.getElementById('passwd').value = '';
+                document.getElementById('passwdcheck').value = '';
+                document.getElementById('passwd').focus();
+                return;
+            }
+            /*비밀번호 아이디 중복제거*/
+            if (idd == paw) {
+                alert("아이디와 비밀번호를 다르게 입력해주세요");
+                document.getElementById('id').value = '';
+                document.getElementById('passwd').value = '';
+                document.getElementById('passwdcheck').value = '';
+                document.getElementById('id').focus();
+                return pawch = 0;
+            }
+            /*검사2*/
+            if (paw == paw2) {
+                alert("확인됐습니다");
+                document.getElementById('passwd').disabled = true;
+                document.getElementById('passwdcheck').disabled = true;
+                return pawch++;
+            }
+            else if (paw != paw2) {
+                alert("비밀번호와 다르게 입력하셨습니다");
+                document.getElementById('passwdcheck').value = '';
+                document.getElementById('passwdcheck').focus();
+                return pawch = 0;
+            }
+        }
+        function reset() {
+            document.getElementById('passwd').disabled = false;
+            document.getElementById('passwdcheck').disabled = false;
+            document.getElementById('id').value = '';
+            document.getElementById('passwd').value = '';
+            document.getElementById('passwdcheck').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('wnals').value = '';
+            document.getElementById('wnals2').value = '';
+            document.getElementById('year').value = '';
+            document.getElementById('passwdcheck').value = '';
+            document.getElementById('mon').value = '';
+            document.getElementById('day').value = '';
+            document.getElementsByName('rhks')
+            document.getElementById('self').value = '';
+
+
+            // 체크박스 초기화
+            var check = document.getElementsByName('rhks');
+            for (var i = 0; i < check.length; i++) {
+                check[i].checked = false;
+            }
+        }
+
+
+
+
+
+
+
+        function join() {
+            let result = new Array();
+            let idd = document.getElementById('id').value;
+            let paw = document.getElementById('passwd').value
+            let ema = document.getElementById('email').value
+            let uname = document.getElementById('name').value
+            let dkv = document.getElementById('wnals').value
+            let enl = document.getElementById('wnals2').value
+            let yea = document.getElementById('year').value
+            let mont = document.getElementById('mon').value
+            let date = document.getElementById('day').value
+            let ho = document.getElementsByName('rhks')
+            let selff = document.getElementById('self').value
+
+            /*아이디 유효성검사*/
+            const idEng = /^[a-zA-Z0-9]+$/;
+            if (idd == "" || idd.length < 4 || idd.length > 12 || !idEng.test(idd)) {
+                alert("아이디를 4~12자의 영문 대소문자와 숫자로만 입력해주세요.");
+                document.getElementById('id').value = '';
+                document.getElementById('id').focus();
+                return;
+            }
+            /*비밀번호 확인버튼*/
+            if (pawch == 0) {
+                alert("비밀번호 확인버튼을 눌러주세요.");
+                return;
+            }
+            /*이메일 유효성검사*/
+            const em = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (ema == "" || !em.test(ema)) {
+                alert("이메일형식으로 다시 입력해주세요.");
+                document.getElementById('email').value = '';
+                document.getElementById('email').focus();
+                return;
+            }
+            /*이름 유효성 검사*/
+            if (uname == "" || uname.length < 2) {
+                alert("이름을 2글자 이상 입력해주세요.");
+                document.getElementById('name').value = '';
+                document.getElementById('name').focus();
+                return;
+            }
+            /*주민등록번호 검사*/
+            if (dkv == "" || dkv.length < 6) {
+                alert("주민등록번호 앞자리를 입력해주세요");
+                document.getElementById('wnals').value = '';
+                document.getElementById('wnals').focus();
+                return;
+            }
+            if (enl == "" || enl.length < 7) {
+                alert("주민등록번호 뒷자리를 입력해주세요");
+                document.getElementById('wnals2').value = '';
+                document.getElementById('wnals2').focus();
+                return;
+            }
+            /*생년월일*/
+            if (yea == "" || yea.length < 4) {
+                alert("년도를 정확하게해주세요");
+                document.getElementById('year').value = '';
+                document.getElementById('year').focus();
+                return;
+            }
+            /* 관심분야 유효성 검사 */
+            let rhkstla = 0;
+            for (var i = 0; i < ho.length; i++) {
+                if (ho[i].checked) {
+                    rhkstla++;
+                    result.push(ho[i].value)
+                }
+            }
+
+            /* 관심분야 유효성 검사 */
+            if (rhkstla == 0) {
+                alert('관심분야를 선택해주세요.');
+                return;
+            }
+            if (result.length == 0) {
+                alert('관심분야를 선택해주세요');
+                return;
+            }
+
+
+            let sub = '아이디 : ' + idd + '\n' + '비밀번호 : ' + paw + '\n' + '이메일 : ' + ema + '\n' +
+                '이름 : ' + uname + '\n' + yea + '년 ' + mont + '월 ' + date + '일' + '\n' + '관심분야 : ' + result + '\n'
+                + '자기소개 : ' + selff
+            /*성공 확인*/
+            console.log(sub)
+
+
+
+
+
+
+            let join = {
+                'idd': idd,
+                'paw': paw,
+                'ema': ema,
+                'uname': uname,
+                'dkv': dkv,
+                'enl': enl,
+                'yea': yea,
+                'mont': mont,
+                'date': date,
+                'result': result,
+                'selff': selff
+            };
+
+            //location.href = 'http://localhost:3000/db'
+            //비동기 ( 화면을 움직이지 않는다 )
+            $.ajax({
+                url: 'http://localhost:3000/join',
+                type: 'get', //default는 get 이기 때문에 생략 가능
+                data: join,
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res)
+                    if (res.status === 200) {
+                        alert('회원가입 성공!')
+                        document.getElementById('passwd').disabled = false;
+                        document.getElementById('passwdcheck').disabled = false;
+                        document.getElementById('id').value = '';
+                        document.getElementById('passwd').value = '';
+                        document.getElementById('passwdcheck').value = '';
+                        document.getElementById('email').value = '';
+                        document.getElementById('name').value = '';
+                        document.getElementById('wnals').value = ''; 
+                        document.getElementById('wnals2').value = '';
+                        document.getElementById('year').value = '';
+                        document.getElementById('mon').value = '';
+                        document.getElementById('day').value = '';
+                        document.getElementById('self').value = '';
+                        let ho = document.getElementsByName('rhks');
+                        for (let i = 0; i < ho.length; i++) {
+                            ho[i].checked = false;
+                        }
+                    } else if (res.status === 409){
+                        alert('회원가입 실패')
+                    }
+                }
+            })
+
+        }
+        function login(){
+            location.href = '03_1_homework.html'
+        }
+
+
+
+    </script>
+</body>
+
+</html>
