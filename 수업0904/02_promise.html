@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <button type="button" class="btn btn-outline-primary" onclick="time()">Promise</button>
+    <button type="button" class="btn btn-outline-primary" onclick="promi()">Promise</button>
+    <button type="button" class="btn btn-outline-primary" onclick="aj()">어려워</button>
+    <button type="button" class="btn btn-outline-primary" onclick="ay()">이것도 어려워</button>
+    <!-- 
+    JS 비동기 통신
+    JS가 스스로 해결하기 어려운 부분 ( 비동기 처리 ) 
+    HTML, CSS, JAVASCRIPT 함수 JAVASCRIPT가 처리가 가능한 영역 ( 괜찮다 )
+
+    ajax, axios, petch ( 통신, server하고 통신 )
+    FTP 파일 I/O등 이 코드가 만약에 통신이 오며느 안 기다리고 다음 실행
+    -->
+    <script>
+
+        //async
+        async function ay() {
+            let obj = {}
+
+            //이 기능이 완전히 끝날때 까지 기다려주는 기능
+            //Promise가 복잡해서 이것을 단순하게 만드는 기능
+            //그래서 이기능은 Promise가 적용된것만 사용이 가능
+            await $.ajax({
+                url: 'http://localhost:3000/send1',
+                type: 'post',
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                success: function (res) {
+                    console.log(res);
+                    resolve(res)
+                },
+                error: function (xhr, status, error) {
+                    console.log('error:')
+                    reject(status)
+                }
+            })
+            console.log(obj)
+        }
+
+        function aj() {
+            let result = new Object()
+
+            let obj = { name: 'sasdfas' };
+            console.log(obj);
+            new Promise((resolve, reject) => {
+                $.ajax({
+                    url: 'http://localhost:3000/send1',
+                    type: 'post',
+                    data: JSON.stringify(obj),
+                    contentType: 'application/json',
+                    success: function (res) {
+                        console.log(res);
+                        resolve(res)
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('error:')
+                        reject(status)
+                    }
+                })
+            })
+                .then(result => {
+                    console.log('성공: ', result)
+                })
+                .catch(result => {
+                    console.log('error: ', result)
+                })
+
+        }
+        function promi() {
+            let pro = new Promise(function (resolve, reject) {
+                console.log('동작구현 부분')
+
+
+                let check = true;
+                //resolve 이 코드가 성공적으로 끝났을 때
+                if (check) {
+                    resolve('빨강')
+                }
+                //reject 코드가 실패 혹은 error가 되었을때
+                else {
+                    reject('파랑')
+                }
+            })
+            //pro가 정상적으로 이행 됐을때, then ( resolve로 함수 넣으면, 이 함수가 실행 된다 )
+            //java에서 try,catch, finally랑 비슷한 코드
+            pro.then(result => {
+                //true
+                console.log(result)
+                console.log('then')
+            })
+                .catch(result => {
+                    //false
+                    console.log(result)
+                    console.log('catch')
+                })
+                .finally(result => {
+                    console.log('무조건 실행')
+                })
+
+            //DB 주고 받을 때, database연결하는 것도 비동기
+            //primary key를 지정 안한 상태라고 가정을 두겠습니다. ( seq도 없음)
+            //1,2,3,4,5 'IDX' 컬럼이 해당 기능을 제공
+
+
+            //1. 'IDX'의 컬럼의 제일 마지막 번호를 갖고 와야 합니다
+            //2. 1번행위가 끝나면, 1번의 결과값을 갖고, insert
+
+            //위의 행위를 비동기 진행안할 경우
+            //1번이 시키고 안기다리고, 2번 실행
+
+
+            //같은것임
+            let pro2 = new Promise((resolve, reject) => {
+
+            })
+        }
+
+        function time() {
+            setTimeout(() => {
+                console.log('set Time Out')
+                console.log('start1')
+            }, 1000);
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bootstrap + ajax</title>
+    <link href="../assets/css/bootstrap.css">
+    <script src="../assets/js/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <button type="button" onclick="getBtn()" class="btn btn-outline-primary">Primary</button>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    <button type="button" class="btn btn-outline-success" onclick="callB()">CallBack 함수</button>
+    <button type="button" class="btn btn-outline-danger">Danger</button>
+    <button type="button" class="btn btn-outline-warning">Warning</button>
+    <button type="button" class="btn btn-outline-info">Info</button>
+    <button type="button" class="btn btn-outline-light">Light</button>
+    <button type="button" class="btn btn-outline-dark">Dark</button>
+
+    <script src="../lib/jquery3.7.1.js"></script>
+    <script>
+
+
+//callBack
+//중복된 코드를 최소화 시키는 것이 주 목적
+//★★★★특징은 매개변수에 함수가 들어간다
+        function callB() {
+            cb(first)
+        }
+        function first(){
+            alert('first')
+        }
+        let second = () =>{
+            alert('second')
+        }
+        function cb(){
+            console.log('실행영역')
+            fn();
+        }
+
+
+
+
+        function callBB() {
+
+            //abc();
+            function abc() {
+                alert('abc')
+            }
+            let fn = () => {
+                alert('fn')
+            }
+            //fn();
+
+            callBa(function () {
+                alert('A의 동작')
+            }, 5)
+            callBa(function () {
+                alert('커스텀')
+            }, 10)
+
+
+            callBa(humanA, 6)
+        }
+
+
+
+
+
+
+
+
+        function humanA() {
+            alert('함수호출')
+        }
+
+
+
+
+
+
+
+
+
+
+        //B라는 사람이 만들기로 했고,
+        //A랑 협력을 해야되는데, A가 지각을 합니다
+        function callBa(fn, number) {
+            //A의 역할
+            fn();
+
+
+
+            //B의 역할
+            alert(number * number);
+
+        }
+
+
+
+
+
+
+
+
+        function getBtn() {
+
+            //비동기 통신
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:3000/get',
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+        }
+
+
+
+
+
+
+
+
+        //2번째 버튼 실행
+        document.querySelectorAll('button[type="button"]')[1].addEventListener('click', function () {
+            let obj = { name: '슈퍼맨' };
+            console.log(obj);
+            $.ajax({
+                url: 'http://localhost:3000/send1',
+                type: 'post',
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                success: function (res) {
+                    console.log(res);
+                }
+            })
+        })
+        //get 방식
+        //데이터를 주고 받을 때, url(주소창)에 값을 올려주고 데이터를 건네주는 방식
+        //보안은 취약, 어떤 데이터를 주는가 다 보입니다.
+        //통신 방식 중, 빠르다.
+
+        //post방식
+        //데이터를 주고 받을 떄,
+        //(데이터 줄 때)request라고 한다.
+        //head, body (request라는 상자 안의 body 영역에 숨겨 놓는다.)
+        //일반인한테 공개 x
+        //post의 방식은 대부분 body영역에 값을 담아놓습니다.
+
+        //★★★
+        //jsp는 post방식할 때, data를 body영역에 두지 않는다. param
+
+
+        //post  ( 보통 json으로 데이터 주고 받고, 이것을 읽어올 준비가 됨.)
+
+    </script>
+</body>
+
+
+</html>
