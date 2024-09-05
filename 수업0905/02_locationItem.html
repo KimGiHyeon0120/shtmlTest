@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>두번째 페이지</title>
+</head>
+
+<body>
+    <input type="button" value="불러오기" onclick="load()">
+
+    <script>
+
+        //이전페이지에서 저장한 localStore값을 불러올 수 있음
+        function load() {
+            let test = localStorage.getItem('key');
+            console.log(test);
+        }
+    </script>
+
+</body>
+
+</html>

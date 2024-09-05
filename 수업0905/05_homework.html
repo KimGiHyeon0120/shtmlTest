@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+
+</head>
+
+<body>
+    <input type="text" id="id" placeholder="로그인">
+    <input type="text" id="pwd" placeholder="비밀번호">
+    <input type="button" value="로그인버튼" onclick="login()">
+    <script src="../lib/jquery3.7.1.js"></script>
+    <script>
+
+
+
+        function login2() {
+            location.href = '05_homework copy.html'
+        }
+
+
+
+
+        function login() {
+            let userId = document.getElementById('id').value;
+            let pwd = document.getElementById('pwd').value;
+
+
+            let data1 = {
+                'userId': userId,
+                'pwd': pwd
+            };
+            $.ajax({
+                url: 'http://localhost:3000/login',
+                type: 'get', //default는 get 이기 때문에 생략 가능
+                data: data1,
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res)
+                    if (res.status === 200) {
+                        alert('로그인 성공!')
+                        document.getElementById('id').value = ''
+                        document.getElementById('pwd').value = ''
+                        sessionStorage.setItem('id', userId)
+                        login2();
+                    } else {
+                        alert('로그인 실패!')
+                    }
+                }
+            })
+
+            
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>쿠키 간단 사용</h1>
+    <input type="button" value="쿠키 체크" onclick="getCookie()">
+    <input type="button" value="쿠키 저장" onclick="setCookie()">
+
+    <script>
+
+        //쿠키 만들기
+        function setCookie() {
+            // name = value 또는 key = value 라고도 함
+            document.cookie = 'cook=value';
+
+            //그냥 저장했을때는 내가 켜고 있는 브라우저가 종료되면 
+            //cookie가 모두 삭제됨 (탭뿐만 아니라 모든 브라우저가 종료될때 삭제됨)
+
+        }
+
+    </script>
+
+    <h1>쿠키 만료기간 만들기</h1>
+    <input type="button" value="쿠키 체크" onclick="getCookie()">
+    <input type="button" value="쿠키 저장" onclick="setDayCookie()">
+    <input type="button" value="Max Save" onclick="maxSave()">
+
+    <input type="text" id="inpName" placeholder="쿠키 이름">
+    <input type="button" value="쿠키 불러오기" onclick="getNameCookie()">
+    <input type="button" value="쿠키 삭제하기" onclick="delCookie()">
+
+    <script>
+
+        function delCookie() {
+            let cookName = document.getElementById('inpName');
+            console.log('삭제대상: ', cookName.value);
+
+            document.cookie = cookName.value + '= ;Max-age=1';
+
+            /*
+            삭제할때 주의사항
+            만들때 옵션 설정한 것 삭제할때 그 옵션 그대로 갖고 와야 합니다
+            생략했으면 생략한 것 그대로 domain혹은 시큐리등 설정했으면 그거 그대로 들고 와야한다
+            expires하고 Max-Age는 제외
+            Max-Age의 값이 -1일때 삭제
+            */
+
+            cookName.value = '';
+            cookName.focus();
+        }
+        function getNameCookie() {
+            let cookName = document.getElementById('inpName');
+            let va = getCookies(cookName.value);
+            console.log('val : ', va);
+            console.log(cookName.value);
+
+            cookName.value = '';
+            cookName.focus();
+        }
+
+        //만료기간 설정을 위해서는 cookie에 expire 옵션을 추가해야함
+        //expires 옵션엔 시계 형식 UTC, GMT 방식이 있음
+        function setDayCookie() {
+
+            //쿠키에 만료일 추가
+            //document.cookie = 'cook=value expires=Fri, 31 Dec 2024:23:59:59 GMT';
+
+            let date = new Date();
+            date.setTime(date.getTime() + (1000 * 60 * 60 * 24));
+
+            console.log(date.toUTCString());
+
+            let expires = 'expires=' + date.toUTCString() + ';';
+
+            document.cookie = 'day=cook;' + expires;
+        }
+
+        // cookie 모두 불러오기
+        function getCookie() {
+            console.log(document.cookie);
+        }
+
+        //max-age
+        function maxSave() {
+            //숫자로 저장을 함, 1=1초 (1시간:3600)
+            document.cookie = 'obj=apple; max-age=' + 5;
+        }
+
+
+        //Secure 
+        //SSL에 적용된 것만 cookie가 실행되도록 설정
+        //https에서만 동작됨. -> http에서는 X
+        //보안을 위해 만들어짐
+        //document.cookie = 'sec=value; Secure';
+
+        //Domain
+        //주소를 뜻함. 우린 localhost
+        //https://www.naver.com에서는 naver.com이 도메인
+
+        //document.cookie = 'doc=banana; Domain=localhost';
+
+        //도메인 속성을 입력하지 않을경우, Default로 현재 사이트의 도메인이 자동으로 입력됨
+        //현재 페이지와 쿠키가 저장된 도메인이 일치하지 않으면 Cookie는 실행되지 않음
+
+        //Path
+        //document.cookie = 'pa=papa; path=/';
+
+        //서버에 대한 환경에 따라 있는 경우가 있고 없는 경우가 있음
+        //한국은 없는 경우가 대부분임 (이유는 IP가 너무 많아서)
+
+        //외국은 IP 한개로 여러 회사가 같이 사용함 -> 그러므로 Port로 구분함
+
+        //Path는 '/'(슬래시) <- 이건 현재 폴더 위치임 
+        //우리는 Server라는 개념은 없고 폴더를 통해서 주고받다보니 path(폴더위치)
+        //Path='/' 는 최상위라는 뜻.    이 경로를 기준으로 하위 디렉터리를 모두 포함임
+        //     '/lib'도 가능임 -> /lib안에 있는 모든 파일도 포함
+
+        function getCookies(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(nameEQ) == 0) {
+                    return c.substring(nameEQ.length, c.length);
+                }
+            }
+            return null;
+        }
+
+        //cookie 저장 형태
+        cook = 100; cook1 = 150
+
+    </script>
+
+
+
+</body>
+
+</html>

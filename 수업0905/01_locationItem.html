@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage 시작</title>
+</head>
+<body>
+    <input type="button" value="저장" onclick="save()">
+    <input type="button" value="불러오기" onclick="load()">
+    <input type="button" value="다음페이지" onclick="move()">
+    <input type="button" value="삭제하기" onclick="del()">
+    <input type="button" value="전체 삭제하기" onclick="delAll()">
+
+    <script>
+        //session, local, cookie
+
+        //내가 선택한 key만 삭제
+        function del() {
+            localStorage.removeItem('key');
+        }
+
+        //localStorage에 있는 모든 키 삭제 (이거 자주 사용함)
+        function delAll() {
+            localStorage.clear();
+        }
+
+        //key라는 이름으로 value가 저장됨
+        function save() {
+            localStorage.setItem('key', 'value'); 
+        }
+
+        //localStorage, server에 저장하는 방식이 아님 즉, 사용자 PC에 저장하는 방식임
+        //내가 만든 사이트 외 다른곳에서 localStorage를 사용했을 경우
+        //그 페이지에 덮어 씌워질 가능성이 존재함
+        //만일 네이버에서 key값을 'user'로   'na10'을 저장했음
+        //구글에서는 'user'를 'go20' 으로 저장했음
+
+        //근데 naver에서 또 localStorage를 열었을때 'na10'을 저장했지만 실제 저장된
+        //값은 'go20'이 저장됨 (마지막에 저장된 값이 최종 저장된거임)
+
+        //그러므로 localStorage는 데이터를 보관하는 용은 절대 아님
+        //DB에서 대용량 데이터를 한페이지 이동할떄마다 1000만건 불러온다고 하면
+        //똑같은 데이터는 또다시 부를 필요가 없음
+        //또 다시 부르지 않기 위해 사용자 PC에 임시적으로 보관함
+        //이 방식은 JS에선 잘 사용하지 않음 (사람들이 잘 몰라서)
+
+        //react, vue가 도입이 되면서 이 기능이 뜨기 시작함
+
+        //똑같은 데이터로 인해 속도가 느려지지 않게하기 위해
+        //페이지 속도 향상을 위해 사용
+        //react의 특징 -> 처음 데이터를 불러올떄 느리고, 그 뒤는 빠름
+        
+        //그럼 얘는 언제 삭제되느냐? 
+        //브라우저에서 사용자 쿠키 지우면 영구적으로 삭제됨
+
+
+        function load() {
+            let test = localStorage.getItem('key');
+            console.log(test);
+        }
+
+        function move() {
+            location.href = "02_locationItem.html";
+        }
+
+
+    </script>
+</body>
+</html>
