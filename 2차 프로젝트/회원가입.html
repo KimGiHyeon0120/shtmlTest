@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <!-- 기본 정보 -->
+        <tr>
+            <td class="q2">아이디:</td>
+            <td><input type="text" id="id"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
+        </tr>
+        <tr>
+            <td class="q2">비밀번호:</td>
+            <td><input type="password" id="passwd"> 4~12자의 영문 대소문자와 숫자로만 입력</td>
+        </tr>
+        <tr>
+            <td class="q2">이메일:</td>
+            <td><input type="text" id="email"> 예) id@domain.com</td>
+        </tr>
+        <tr>
+            <td class="q2">이름:</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td class="q2">전화번호:</td>
+            <td><input type="text" id="phone"> 예) 010-1234-5678</td>
+        </tr>
+        <!-- 프로필 이미지 추가 -->
+        <tr>
+            <td class="q2">프로필 이미지:</td>
+            <td><input type="file" id="profilePic" accept="image/*" onchange="previewImage(event)"></td>
+        </tr>
+        <!-- 이미지 미리보기 -->
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <img id="preview" src="#" alt="이미지 미리보기" style="display: none; max-width: 100px; height: auto;">
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        <input type="button" value="회원 가입" onclick="join()">
+        <input type="reset" value="다시 입력" onclick="resetForm()">
+        <input type="button" value="로그인" onclick="login()">
+    </div>
+
+    <script src="../lib/jquery3.7.1.js"></script>
+    <script>
+        // 이미지 미리보기 기능
+        function previewImage(event) {
+            const reader = new FileReader();
+            const preview = document.getElementById('preview');
+
+            reader.onload = function () {
+                preview.src = reader.result;
+                preview.style.display = 'block';  // 이미지가 보이게 설정
+            };
+
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        function join() {
+            let idd = document.getElementById('id').value;
+            let paw = document.getElementById('passwd').value;
+            let ema = document.getElementById('email').value;
+            let uname = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+
+            let profilePicInput = document.getElementById('profilePic');
+            let profilePic = profilePicInput.files[0];
+
+            let formData = new FormData();  // FormData로 데이터를 전송
+            formData.append('idd', idd);
+            formData.append('paw', paw);
+            formData.append('ema', ema);
+            formData.append('uname', uname);
+            formData.append('phone', phone);
+
+            // 이미지가 선택되지 않으면 기본 이미지로 설정
+            if (profilePic) {
+                formData.append('profilePic', profilePic);
+            } else {
+                formData.append('profilePic', null);  // 기본 이미지 설정
+            }
+
+            // 비동기 (AJAX) 요청으로 서버에 회원 정보 전송
+            $.ajax({
+                url: 'http://localhost:3000/join2',
+                type: 'POST',
+                data: formData,  // FormData 전송
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    if (res.status === 200) {
+                        alert('회원가입 성공!');
+                        resetForm();
+                    } else if (res.status === 409) {
+                        alert('이미 존재하는 아이디입니다.');
+                    }
+                },
+                error: function () {
+                    alert('회원가입 처리 중 오류가 발생했습니다.');
+                }
+            });
+        }
+
+        function resetForm() {
+            document.getElementById('id').value = '';
+            document.getElementById('passwd').value = '';
+            document.getElementById('passwdcheck').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('profilePic').value = '';
+        }
+
+        function login() {
+            location.href = '03_1_homework.html';  // 로그인 페이지로 이동
+        }
+    </script>
+</body>
+
+</html>
