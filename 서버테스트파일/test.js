@@ -58,7 +58,7 @@ const path = require('path');
 // 파일 저장 설정
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'profil/');  // 이미지가 저장될 경로
+        cb(null, 'profile/');  // 이미지가 저장될 경로
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + path.extname(file.originalname));  // 파일 이름을 현재 시간으로 설정
