@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임 검색</title>
+    <style>
+        .game-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+        }
+        .game-item img {
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="search-input" class="search-input" placeholder="검색어를 입력하세요">
+    <button id="search-button">검색</button>
+
+    <div id="search-results">
+        <!-- 검색 결과가 여기에 표시됩니다 -->
+    </div>
+
+    <script>
+        document.getElementById('search-button').addEventListener('click', async function() {
+            const searchInput = document.getElementById('search-input').value;
+            const response = await fetch(`http://localhost:3000/search-games?q=${searchInput}`);
+            const games = await response.json();
+
+            const searchResultsDiv = document.getElementById('search-results');
+            searchResultsDiv.innerHTML = ''; // 이전 검색 결과를 지웁니다.
+
+            if (games.length === 0) {
+                searchResultsDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
+                return;
+            }
+
+            games.forEach(game => {
+                const gameItem = document.createElement('div');
+                gameItem.className = 'game-item';
+                gameItem.innerHTML = `
+                    <h2>${game.gameName}</h2>
+                    <img src="${game.image_url}" alt="${game.gameName}">
+                    <p><strong>가격:</strong> ${game.price}</p>
+                    <p><strong>개발자:</strong> ${game.developer}</p>
+                    <p><strong>출시일:</strong> ${game.releaseDate}</p>
+                    <p><strong>설명:</strong> ${game.description}</p>
+                `;
+                searchResultsDiv.appendChild(gameItem);
+            });
+        });
+    </script>
+</body>
+</html>

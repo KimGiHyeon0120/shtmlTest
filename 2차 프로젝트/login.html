@@ -1,0 +1,86 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <link rel="stylesheet" href="../css/styleLogin.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <!-- 로고 -->
+            <h1 class="login-title">UNION</h1>
+
+            <!-- 로그인 입력 폼 -->
+            <form class="login-form">
+                <div class="group">      
+                    <input type="text"  class="inputT" id="userId" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>아이디</label>
+                </div>
+                <div class="group" style="margin-bottom:10px;">      
+                    <input type="text"  class="inputT" id="pwd" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>비밀번호</label>
+                </div>
+                
+                <div class="login-options">
+                    <input type="checkbox" class="checkbox"> 로그인 상태 유지
+                </div>
+                <!-- <button type="submit" class="login-btn login-form-input">로그인</button> -->
+                <button type="button" class="btn" onclick="login()"><span>로그인</span></button>
+            </form>
+
+            <!-- 기타 옵션 -->
+            <div class="login-links">
+                <a href="#">비밀번호 찾기</a>
+                <a href="#">아이디 찾기</a>
+                <a href="#">회원가입</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../lib/jquery3.7.1.js"></script>
+    <script>
+        /*───────────────────────────────────────────────────────────────────────────────────────────*/
+        /*로그인버튼*/
+        function login() {
+            let userId = document.getElementById('userId').value;
+            let pwd = document.getElementById('pwd').value;
+            console.log(userId, pwd)
+            let data1 = {
+                'userId': userId,
+                'pwd': pwd
+            };
+            console.log(data1)
+            $.ajax({
+                url: 'http://localhost:3000/login',
+                type: 'get',
+                data: data1,
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res); // 서버에서 받아온 응답을 확인
+                    if (res.status === 200) {
+                        console.log(res);
+                        // 서버에서 받은 name 값을 alert로 출력
+                        alert(res.name + '님 환영합니다!');
+                        document.getElementById('userId').value = '';
+                        document.getElementById('pwd').value = '';
+                    } else {
+                        console.log(res);
+                        alert('로그인 실패!');
+                    }
+                },
+                error: function () {
+                    alert('서버 통신 오류');
+                }
+            });
+        }
+        /*───────────────────────────────────────────────────────────────────────────────────────────*/
+    </script>
+</body>
+
+</html>

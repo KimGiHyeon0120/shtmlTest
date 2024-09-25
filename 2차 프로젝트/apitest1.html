@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .game {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .game img {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>게임 목록</h1>
+    <div id="games-list"></div>
+
+    <script>
+        // 게임 정보를 불러오는 함수
+        async function fetchGames() {
+            try {
+                const response = await fetch('http://localhost:3000/getAllGames');
+                const data = await response.json();
+                
+                if (data.status === 200) {
+                    const gamesList = document.getElementById('games-list');
+                    data.games.forEach(game => {
+                        const gameDiv = document.createElement('div');
+                        gameDiv.classList.add('game');
+
+                        gameDiv.innerHTML = `
+                            <h2>${game.gameName}</h2>
+                            <p>가격: ${game.price} 원</p>
+                            <p>개발사: ${game.developer}</p>
+                            <p>출시일: ${game.releaseDate}</p>
+                            <p>${game.description}</p>
+                            <img src="${game.imageUrl}" alt="${game.gameName}">
+                        `;
+
+                        gamesList.appendChild(gameDiv);
+                    });
+                } else {
+                    console.error('게임 정보를 불러오는 중 오류 발생');
+                }
+            } catch (error) {
+                console.error('게임 정보를 불러오는 중 오류 발생:', error);
+            }
+        }
+
+        // 페이지가 로드될 때 게임 정보를 불러옴
+        window.onload = fetchGames;
+    </script>
+</body>
+</html>

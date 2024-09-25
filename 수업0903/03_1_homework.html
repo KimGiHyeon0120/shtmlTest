@@ -43,7 +43,8 @@
                 success: function (res) {
                     console.log(res)
                     if (res.status === 200) {
-                        alert('로그인 성공!')
+                        alert(res.name + '로그인 성공!')
+                        
                         document.getElementById('id').value = ''
                         document.getElementById('pwd').value = ''
                     } else {
